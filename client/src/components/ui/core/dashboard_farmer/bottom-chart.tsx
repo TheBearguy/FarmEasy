@@ -5,7 +5,9 @@ import { Wrapper } from "@components/common/containers";
 
 import { LEFT_CHART } from "@/data/dashboard-left-chart";
 
-const LeftChart: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
+const BottomChart: React.FC<{ children?: React.ReactNode }> = ({
+    children,
+}) => {
     return (
         <Wrapper>
             <ResponsiveContainer width="100%" height={350}>
@@ -31,4 +33,4 @@ const LeftChart: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
         </Wrapper>
     );
 };
-export default LeftChart;
+export default BottomChart;

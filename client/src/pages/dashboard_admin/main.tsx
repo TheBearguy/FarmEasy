@@ -35,7 +35,7 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
         <Main className="flex flex-col relative top-0.5 pt-5 px-4">
             <Box className="space-y-4">
                 <Typography variant="h2" className="border-b-0 max-md:text-2xl">
-                    Hi, Welcome Back 👋
+                    Hey Admin! 👋
                 </Typography>
 
                 <Box className="grid grid-rows-4 md:grid-rows-2 md:grid-cols-2 lg:grid-rows-1 lg:grid-cols-4 gap-4">
@@ -51,9 +51,6 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                                 <div className="text-2xl font-bold">
                                     {card.content}
                                 </div>
-                                <p className="text-xs text-muted-foreground">
-                                    {card.footer}
-                                </p>
                             </CardContent>
                         </Card>
                     ))}

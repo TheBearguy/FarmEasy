@@ -45,7 +45,7 @@ import { CiChat1 } from "react-icons/ci";
 
 import { AiOutlineEye, AiOutlineEyeInvisible, AiFillInstagram } from "react-icons/ai";
 
-import { BiWorld, BiArrowBack } from "react-icons/bi";
+import { BiWorld, BiArrowBack, BiPurchaseTag } from "react-icons/bi";
 
 import { HiChatBubbleLeftRight } from "react-icons/hi2";
 
@@ -55,7 +55,7 @@ import { BsGraphUpArrow } from "react-icons/bs";
 
 import { ImTree } from "react-icons/im";
 
-import { IoMdMenu } from "react-icons/io";
+import { IoMdMenu, IoIosPricetag } from "react-icons/io";
 
 import { RxDashboard } from "react-icons/rx";
 
@@ -92,7 +92,9 @@ export {
     AiFillInstagram,
     BiWorld,
     BiArrowBack,
+    BiPurchaseTag,
     IoCall,
+    IoIosPricetag,
     IoBagHandle,
     IoPieChart,
     IoPeople,

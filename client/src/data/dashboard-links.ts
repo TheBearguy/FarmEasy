@@ -1,6 +1,12 @@
 import { NavItem } from "@/types";
 
-import { RxDashboard, FaFilePdf, CiChat1 } from "@/icons";
+import {
+    RxDashboard,
+    FaFilePdf,
+    CiChat1,
+    BiPurchaseTag,
+    IoIosPricetag,
+} from "@/icons";
 
 export const SIDEBAR_LINKS_ADMIN: NavItem[] = [
     {
@@ -29,6 +35,18 @@ export const SIDEBAR_LINKS_FARMER: NavItem[] = [
         icon: CiChat1,
         iconColor: "rt-normal-amber-800",
         link: "/dashboard/farmer/chat",
+    },
+    {
+        title: "Buy Equipments",
+        icon: BiPurchaseTag,
+        iconColor: "rt-normal-red-1000",
+        link: "/dashboard/farmer/buy",
+    },
+    {
+        title: "Sell and Rent",
+        icon: IoIosPricetag,
+        iconColor: "rt-normal-red-1000",
+        link: "/dashboard/farmer/sell",
     },
 ];
 

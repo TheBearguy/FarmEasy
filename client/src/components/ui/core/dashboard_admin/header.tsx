@@ -11,7 +11,6 @@ import {
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuLabel,
-    DropdownMenuSeparator,
     DropdownMenuTrigger,
 } from "@components/common/dropdown-menu";
 
@@ -23,10 +22,7 @@ const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
             <nav className="h-14 bg-custom-color flex items-center justify-between space-x-2 pr-2">
                 {/* Logo goes here */}
                 <Box className="hidden lg:block">
-                    <Link
-                        className="flex items-center gap-2 pl-4"
-                        to="https://github.com/Kiranism/next-shadcn-dashboard-starter"
-                        target="_blank">
+                    <Link className="flex items-center gap-2 pl-4" to="#">
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
@@ -35,7 +31,8 @@ const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            className="mr-2 h-6 w-6">
+                            className="mr-2 h-6 w-6"
+                        >
                             <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
                         </svg>
                     </Link>
@@ -57,7 +54,8 @@ const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="mr-2 h-6 w-6">
+                        className="mr-2 h-6 w-6"
+                    >
                         <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
                     </svg>
                 </Box>
@@ -117,18 +115,11 @@ const Navbar: React.FC = () => {
                         <Typography
                             variant="p"
                             affects="removePMargin"
-                            className="text-rt-alpha-amber-1200 text-xs leading-none">
+                            className="text-rt-alpha-amber-1200 text-xs leading-none"
+                        >
                             {user.email}
                         </Typography>
                     </DropdownMenuLabel>
-
-                    <DropdownMenuSeparator className="border-custom-border bg-custom-border" />
-                    <DropdownMenuItem>Profile</DropdownMenuItem>
-                    <DropdownMenuItem>Billing</DropdownMenuItem>
-                    <DropdownMenuItem>Team</DropdownMenuItem>
-                    <DropdownMenuItem>Subscription</DropdownMenuItem>
-
-                    <DropdownMenuSeparator className="border-custom-border bg-custom-border" />
                     <DropdownMenuItem onClick={handleLogOut}>
                         Logout
                     </DropdownMenuItem>
