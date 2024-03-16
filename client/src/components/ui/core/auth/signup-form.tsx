@@ -1,6 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "sonner";
+
+import { authApi } from "@/api";
 
 const SignUp = () => {
     const navigate = useNavigate();
@@ -9,7 +11,7 @@ const SignUp = () => {
         name: "",
         email: "",
         password: "",
-        role: "Artist",
+        role: "User",
         file: "",
     });
 
@@ -40,14 +42,12 @@ const SignUp = () => {
         };
 
         try {
-            const res = await fetch(
-                "http://localhost:3001/api/v1/users/signup",
-                requestOptions,
-            );
+            const res = await fetch(authApi.SIGNUP, requestOptions);
 
             if (res.ok) {
                 const data = await res.json();
-                console.log("Data is uploaded", data.user);
+                console.log(data);
+                console.log("Data is uploaded", data.data.user);
 
                 console.log(formData);
 
@@ -62,7 +62,11 @@ const SignUp = () => {
                 );
 
                 toast.success("Successfully Signed Up");
-                navigate("/dashboard/uploadmusic");
+                if (data.data.user.role === "Farmer") {
+                    navigate("/dashboard/farmer");
+                } else {
+                    navigate("/dashboard/farmer"); //! Change Farmer
+                }
             } else {
                 toast.error("Something went wrong");
                 console.error("Upload failed");
