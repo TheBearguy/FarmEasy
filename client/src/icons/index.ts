@@ -13,7 +13,7 @@ import {
     FaRegEnvelope,
 } from "react-icons/fa";
 
-import { FaDollarSign, FaSquareInstagram } from "react-icons/fa6";
+import { FaDollarSign, FaSquareInstagram, FaCartShopping } from "react-icons/fa6";
 
 import {
     VscVm,
@@ -76,6 +76,7 @@ export {
     FaDollarSign,
     FaSquareInstagram,
     FaLinkedin,
+    FaCartShopping,
     HiOutlineMenuAlt1,
     HiOutlineViewGrid,
     HiOutlineCube,

@@ -13,12 +13,12 @@ import {
     CardTitle,
 } from "@components/common/card";
 
-import { SellProductProps } from "@/types";
+import { ProductProps } from "@/types";
 
 import { toast } from "sonner";
 
 export default function Feed() {
-    const [product, setProduct] = useState<SellProductProps[]>([]);
+    const [product, setProduct] = useState<ProductProps[]>([]);
 
     useEffect(() => {
         async function fetchPosts() {

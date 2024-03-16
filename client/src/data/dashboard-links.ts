@@ -6,6 +6,7 @@ import {
     CiChat1,
     BiPurchaseTag,
     IoIosPricetag,
+    FaCartShopping,
 } from "@/icons";
 
 export const SIDEBAR_LINKS_ADMIN: NavItem[] = [
@@ -48,6 +49,12 @@ export const SIDEBAR_LINKS_FARMER: NavItem[] = [
         iconColor: "rt-normal-red-1000",
         link: "/dashboard/farmer/sell",
     },
+    {
+        title: "Cart",
+        icon: FaCartShopping,
+        iconColor: "rt-normal-blue-1000",
+        link: "/dashboard/farmer/convert-to-pdf",
+    },
 ];
 
 ("text-rt-normal-amber-800");
@@ -55,3 +62,5 @@ export const SIDEBAR_LINKS_FARMER: NavItem[] = [
 ("text-rt-normal-red-1000");
 ("text-rt-normal-slate-100/5");
 ("text-rt-normal-sand-1200");
+("text-rt-normal-blue-1000");
+

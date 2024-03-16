@@ -18,6 +18,8 @@ import {
 } from "@/layouts";
 
 const Home = lazy(() => import("@/pages/home"));
+const Login = lazy(() => import("@/pages/login"));
+const Signup = lazy(() => import("@/pages/signup"));
 
 const Dashboard_Admin = lazy(() => import("@/pages/dashboard_admin/main"));
 const ConvertToPDF = lazy(
@@ -42,6 +44,24 @@ const router = createBrowserRouter(
                     element={
                         <Loading>
                             <Home />
+                        </Loading>
+                    }
+                />
+
+                <Route
+                    path="login"
+                    element={
+                        <Loading>
+                            <Login />
+                        </Loading>
+                    }
+                />
+
+                <Route
+                    path="signup"
+                    element={
+                        <Loading>
+                            <Signup />
                         </Loading>
                     }
                 />

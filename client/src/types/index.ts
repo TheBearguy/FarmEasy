@@ -30,7 +30,7 @@ export interface ILeftChart {
     total: number;
 }
 
-export interface SellProductProps {
+export interface ProductProps {
     img: string;
     name: string;
     category: string;

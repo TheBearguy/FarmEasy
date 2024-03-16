@@ -27,8 +27,16 @@
     .custom-no-scrollbar::-webkit-scrollbar {
         @apply hidden;
     }
-    
-    .custom-caret-color {
-        @apply caret-rt-normal-violet-1000;
+
+    .custom-input-field {
+        @apply caret-black placeholder-black rounded-md p-2 text-xl max-sm:text-xs outline-none bg-green-500 text-black font-medium;
+    }
+
+    form label {
+        @apply select-none;
+    }
+
+    form label.important  {
+        @apply after:content-['*'] after:text-red-500 after:ml-1 after:text-sm;
     }
 }
