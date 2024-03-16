@@ -56,16 +56,15 @@ exports.postProduct = async (req, res, next) => {
     }
 };
 
-
-exports.getAllProducts = (req, res) => {
+exports.getAllProducts = async (req, res) => {
     try {
-        // const products = req.user._id;
-        console.log("REQ USER");
-        res.status(200).json("Hello");
+        const products = await Product.find({}).exec();
+        res.status(200).json(products);
     } catch (err) {
         res.status(500).json({ message: "Internal server error" });
     }
 }
+
 
 exports.getSingleProduct = (req, res) => {
     try {

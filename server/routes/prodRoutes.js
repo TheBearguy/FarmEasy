@@ -7,6 +7,6 @@ router.post("/postProduct", prodController.uploadFile, authController.protect, p
 router.post("/getSingleProduct/:id", prodController.getSingleProduct);
 router.get("/getFarmerProducts", authController.protect, prodController.getFarmerProducts);
 
-router.get("/getAllProducts", prodController.getAllProducts);
+router.get("/getAllProducts", authController.protect, prodController.getAllProducts);
 
 module.exports = router;
