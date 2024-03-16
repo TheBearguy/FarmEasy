@@ -8,7 +8,8 @@ const dotenv = require("dotenv");
 
 // MANUAL FILE IMPORTS :
 const userRoutes = require("./routes/userRoutes");
-// const songRoutes = require("./routes/songRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const prodRoutes = require("./routes/prodRoutes");
 
 // INSTANCE OF EXPRESS :
 const app = express();
@@ -51,7 +52,8 @@ app.get("/admin", (req, res) => {
 
 // ROUTE HANDLERS ==> MOUNTING THE ROUTER :
 app.use("/api/v1/users", userRoutes);
-// app.use("/api/v1/users", songRoutes);
+app.use("/api/v1/users", adminRoutes);
+app.use("/api/v1/users", prodRoutes);
 
 // ANY UNHANDLED ROUTE :
 app.all("*", (req, res, next) => {
