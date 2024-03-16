@@ -3,7 +3,7 @@ import React from "react";
 import { Box } from '@components/common/containers'
 import { Avatar, AvatarFallback, AvatarImage } from "@components/common/avatar";
 
-const RightComp: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
+const LeftComp: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
     return (
         <Box className="space-y-8 overflow-y-auto">
             <Box className="flex items-center">
@@ -86,4 +86,4 @@ const RightComp: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
     );
 };
 
-export default RightComp;
+export default LeftComp;

@@ -16,7 +16,11 @@ import {
     TabsList,
 } from "@components/common/tabs";
 
-import { LeftChart, RightComp } from "@/components/ui/core/dashboard_farmer";
+import {
+    LeftComp,
+    RightComp,
+    BottomChart,
+} from "@/components/ui/core/dashboard_farmer";
 
 // import { DASHBOARD_CARDS_FARMER } from "@/data/dashboard-card";
 
@@ -25,7 +29,7 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
         <Main className="flex flex-col relative top-0.5 pt-5 px-4">
             <Box className="space-y-4">
                 <Typography variant="h2" className="border-b-0 max-md:text-2xl">
-                    Hi, Welcome Back 👋
+                    Welcome Farmer 👋
                 </Typography>
 
                 <Tabs defaultValue="account" className="w-[200px]">
@@ -55,15 +59,15 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                         </Card>
                     ))}
                 </Box> */}
-                <Box className="grid grid-rows-2 lg:grid-cols-7 gap-4">
-                    <Card className="col-span-4">
+                <Box className="grid max-mdgrid-rows-2 lg:grid-cols-6 gap-4">
+                    <Card className="col-span-3">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                             <CardTitle className="text-sm font-bold">
                                 Overview
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <LeftChart />
+                            <LeftComp />
                         </CardContent>
                     </Card>
                     <Card className="col-span-3">
@@ -76,6 +80,10 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                             <RightComp />
                         </CardContent>
                     </Card>
+                </Box>
+
+                <Box className="pt-5 pb-10 ring-slate-200 ring-1 rounded-xl">
+                    <BottomChart />
                 </Box>
             </Box>
             {children}

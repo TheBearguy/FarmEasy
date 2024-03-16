@@ -1,12 +1,9 @@
-import React from "react";
+import React, { lazy } from "react";
 import { RouterProvider } from "react-router-dom";
 
 import { Toaster } from "@components/common/sonner";
+import { Loading } from "@components/common/suspense-loader";
 import { ScrollToTop } from "@components/common/scroll-to-top";
-
-// import router from "./routes";
-
-import { lazy } from "react";
 
 import {
     Route,
@@ -19,9 +16,10 @@ import {
     DashboardAdminLayout,
     DashboardFarmerLayout,
 } from "@/layouts";
-import { Loading } from "@components/common/suspense-loader";
 
 const Home = lazy(() => import("@/pages/home"));
+const Login = lazy(() => import("@/pages/login"));
+const Signup = lazy(() => import("@/pages/signup"));
 
 const Dashboard_Admin = lazy(() => import("@/pages/dashboard_admin/main"));
 const ConvertToPDF = lazy(
@@ -30,6 +28,8 @@ const ConvertToPDF = lazy(
 
 const Dashboard_Farmer = lazy(() => import("@/pages/dashboard_farmer/main"));
 const Chat = lazy(() => import("@/pages/dashboard_farmer/chat"));
+const Buy = lazy(() => import("@/pages/dashboard_farmer/buy"));
+const Sell = lazy(() => import("@/pages/dashboard_farmer/sell"));
 
 const NotFound = lazy(() => import("@/pages/not-found"));
 
@@ -44,6 +44,24 @@ const router = createBrowserRouter(
                     element={
                         <Loading>
                             <Home />
+                        </Loading>
+                    }
+                />
+
+                <Route
+                    path="login"
+                    element={
+                        <Loading>
+                            <Login />
+                        </Loading>
+                    }
+                />
+
+                <Route
+                    path="signup"
+                    element={
+                        <Loading>
+                            <Signup />
                         </Loading>
                     }
                 />
@@ -80,10 +98,28 @@ const router = createBrowserRouter(
                 />
 
                 <Route
-                    path="chat`"
+                    path="chat"
                     element={
                         <Loading>
                             <Chat />
+                        </Loading>
+                    }
+                />
+
+                <Route
+                    path="buy"
+                    element={
+                        <Loading>
+                            <Buy />
+                        </Loading>
+                    }
+                />
+
+                <Route
+                    path="sell"
+                    element={
+                        <Loading>
+                            <Sell />
                         </Loading>
                     }
                 />
