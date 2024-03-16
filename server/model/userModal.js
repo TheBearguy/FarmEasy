@@ -12,9 +12,6 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
     },
-    eKYF: {
-        type: String,
-    },
     file: {
         type: String,
     },
@@ -22,16 +19,14 @@ const userSchema = new mongoose.Schema({
         type: String,
         enum: ["Farmer", "User", "Admin"],
     },
-    Products: [
-        
-    ]
+    Products: []
 });
 
 userSchema.pre('save', async function (next) {
     const user = this;
 
     if (!user.isModified('password')) return;
-    console.log(user.password);
+    console.log("User Password", user.password);
 
     const saltRound = 10;
     let hashPassword;
@@ -40,7 +35,7 @@ userSchema.pre('save', async function (next) {
         this.password = hashPassword;
     } catch (err) {
         //! return
-        console.log(chalk.red(`Error in hashing password: ${err}`));
+        console.log("Error in password hashing : ", err);
     }
     next();
 });
