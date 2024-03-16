@@ -134,20 +134,20 @@ exports.login = async (req, res, next) => {
 // };
 
 // GET SINGLE ARTIST INFO -
-// exports.getSingleArtist = async (req, res) => {
-//     try {
-//         console.log(req.user);
-//         const { id } = req.user;
+exports.getCurrentUserDetails = async (req, res) => {
+    try {
+        // console.log("REQ USER", req.user);
+        const { id } = req.user;
 
-//         const artist = await User.findById(id);
-//         console.log(artist);
+        const user = await User.findById(id);
+        // console.log("USER :", user);
 
-//         res.status(200).json(artist); // Send only the names of artists in the response
-//     } catch (err) {
-//         console.error("ERROR", err);
-//         res.status(500).json({ message: "Internal server error" });
-//     }
-// };
+        res.status(200).json(user); // Send only the names of artists in the response
+    } catch (err) {
+        console.error("ERROR", err);
+        res.status(500).json({ message: "Internal server error" });
+    }
+};
 
 // NOT REQURIED :
 // exports.getAllUsers = async (req, res) => {

@@ -5,15 +5,12 @@ const ProductSchema = new mongoose.Schema(
         prodName: {
             type: String,
             required: true,
-            trim: true,
         },
         prodImage: {
             type: String,
-            required: true,
         },
         prodPrice: {
             type: Number,
-            required: true,
         },
         prodDescription: {
             type: String,
@@ -24,12 +21,11 @@ const ProductSchema = new mongoose.Schema(
         farmerID: {
             type: mongoose.Schema.Types.ObjectId,
             ref: 'User',
-            required: true,
         },
-        category: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Category',
-        },
+        // category: {
+        //     type: mongoose.Schema.Types.ObjectId,
+        //     ref: 'Category',
+        // },
     },
     {
         timestamps: true,
