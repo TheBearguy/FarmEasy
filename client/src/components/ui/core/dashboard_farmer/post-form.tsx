@@ -1,248 +1,182 @@
-import { ChangeEvent, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { Button } from "@components/common/button";
-import { Section, Box, Wrapper } from "@components/common/containers";
-import { Label } from "@components/common/label";
+import { Section, Box } from "@components/common/containers";
 import {
     Dialog,
     DialogContent,
-    DialogFooter,
     DialogTrigger,
 } from "@components/common/dialog";
 
-import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
-} from "@components/common/select";
-
 import { PRODUCT_CATEGORY } from "@/data/product_category";
-import { ProductProps } from "@/types";
 
-import { addProduct } from "@/api/productAPI";
-
-interface formProps extends ProductProps {}
-
-import { toast } from "sonner";
+import { productApi } from "@/api/index";
 
 function Form() {
-    const [imageUrl, setImageUrl] = useState<File>();
+    const [formData, setFormData] = useState({
+        prodName: "",
+        prodImage: "",
+        prodPrice: "",
+        category: "Crop seeds",
+        prodDescription: "",
+        prodQuantity: "",
+    });
 
-    const {
-        register,
-        reset,
-        setValue,
-        handleSubmit,
-        formState: { errors, isSubmitting },
-    } = useForm<formProps>();
-
-    const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
-        if (e.target.files === null || e.target.files === undefined) return;
-
-        setImageUrl(e.target.files[0]);
-
-        console.log(e.target.files[0]);
-        toast.success("Image uploaded successfully", {
-            position: "bottom-right",
-        });
-    };
-
-    const submitPostForm = async (data: formProps) => {
-        console.log({
-            ...data,
-            img: data.img[0],
-        });
-
-        try {
-            const res = await addProduct({
-                ...data,
-                img: imageUrl,
-            }).then((res) => {
-                console.log(res);
-                return res;
-            });
-
-            toast.success("Post added successfully", {
-                position: "bottom-right",
-            });
-
-            // window.location.reload();
-            reset();
-        } catch (error) {
-            const errorObject = {
-                code: (error as Error).name,
-                message: (error as Error).message,
-            };
-
-            toast.error(`${errorObject.message?.toString()}`, {
-                position: "bottom-right",
-            });
+    const handleChange = (e) => {
+        if (e.target.name === "prodImage") {
+            setFormData({ ...formData, prodImage: e.target.files[0] });
+            console.log(e.target.files[0], "IMAGE");
+        } else {
+            setFormData({ ...formData, [e.target.name]: e.target.value });
         }
     };
 
+    async function handleSubmit(e) {
+        e.preventDefault();
+
+        const formDataToSend = new FormData(); // Use FormData for file upload
+        formDataToSend.append("prodName", formData.prodName);
+        formDataToSend.append("prodPrice", formData.prodPrice);
+        formDataToSend.append("category", formData.category);
+        formDataToSend.append("prodDescription", formData.prodDescription);
+        formDataToSend.append("prodQuantity", formData.prodQuantity);
+        formDataToSend.append("prodImage", formData.prodImage);
+        console.log("FormData : ", formData.prodImage); // Append file
+
+        console.log("FormDataToSend : ", formDataToSend);
+        console.log("FormData : ", formData);
+
+        const token = localStorage.getItem("token");
+        console.log(token);
+
+        const requestOptions = {
+            method: "POST",
+            body: formDataToSend, // Send FormData object for file upload
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        };
+
+        try {
+            await fetch(productApi.ADD_PRODUCT, requestOptions);
+        } catch (error) {
+            console.error("Error occurred:", error);
+        }
+    }
+
     return (
         <Box className="grid gap-4 py-4">
-            <form onSubmit={handleSubmit(submitPostForm)}>
-                <Box className="flex flex-col gap-1">
-                    <Box className="flex flex-1 flex-col gap-2">
-                        <Box className="text-rich-black-5 flex flex-1 flex-col items-start gap-2 text-sm">
-                            <Label
-                                className="text-black text-md"
-                                htmlFor="name"
-                            >
-                                Name
-                            </Label>
-                            <input
-                                type="text"
-                                id="name"
-                                {...register("name", {
-                                    required: {
-                                        value: true,
-                                        message: "Enter the product name",
-                                    },
-                                })}
-                                placeholder="Enter Product Name"
-                                className="custom-input-field w-full flex-1 indent-2 text-base font-normal"
-                            />
-                            {errors.name && (
-                                <Wrapper className="text-red-500 font-semibold text-xs">
-                                    {errors.name.message?.toString()}
-                                </Wrapper>
-                            )}
-                        </Box>
-                        <Box className="text-rich-black-5 flex flex-1 flex-col items-start gap-2 text-sm">
-                            <textarea
-                                {...register("description", {
-                                    required: {
-                                        value: true,
-                                        message:
-                                            "The post text is required. Please enter a post.",
-                                    },
-                                    validate: (value) =>
-                                        value.trim().length > 10 ||
-                                        "The description least 10 characters long.",
-                                })}
-                                id="description"
-                                placeholder="Enter the description here..."
-                                className="custom-input-field h-min w-full indent-2 text-base font-normal"
-                            />
-                            {errors.description && (
-                                <Wrapper className="text-red-500 font-semibold text-xs">
-                                    {errors.description.message?.toString()}
-                                </Wrapper>
-                            )}
-                        </Box>
-                    </Box>
+            <form onSubmit={handleSubmit}>
+                <div className="mb-4">
+                    {" "}
+                    <label
+                        htmlFor="prodName"
+                        className="block text-sm font-medium text-black"
+                    >
+                        Name
+                    </label>
+                    <input
+                        type="text"
+                        id="prodName"
+                        name="prodName"
+                        value={formData.prodName}
+                        onChange={handleChange}
+                        className="text-black mt-1 p-2 w-full border rounded-md"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label
+                        htmlFor="email"
+                        className="block text-sm font-medium text-black"
+                    >
+                        Description
+                    </label>
+                    <input
+                        type="text"
+                        id="prodDescription"
+                        name="prodDescription"
+                        value={formData.prodDescription}
+                        onChange={handleChange}
+                        className="text-black mt-1 p-2 w-full border rounded-md"
+                    />
+                </div>
 
-                    <Box className="text-rich-black-5 flex flex-1 flex-col items-start gap-2 text-sm">
-                        <Select>
-                            <SelectTrigger className="w-[180px] custom-input-field bg-green-600">
-                                <SelectValue placeholder="Category" />
-                            </SelectTrigger>
-                            <SelectContent>
-                                {PRODUCT_CATEGORY.map((category, index) => (
-                                    <SelectItem
-                                        key={index}
-                                        value={category}
-                                        onClick={() =>
-                                            setValue("category", category)
-                                        }
-                                    >
-                                        {category}
-                                    </SelectItem>
-                                ))}
-                            </SelectContent>
-                        </Select>
-                        {errors.description && (
-                            <Wrapper className="text-red-500 font-semibold text-xs">
-                                {errors.description.message?.toString()}
-                            </Wrapper>
-                        )}
-                    </Box>
+                <div className="mb-4">
+                    <label
+                        htmlFor="walletAddress"
+                        className="block text-sm font-medium text-black"
+                    >
+                        Upload Product Image
+                    </label>
+                    <input
+                        type="file"
+                        id="prodImage"
+                        name="prodImage"
+                        onChange={handleChange}
+                        className="text-black mt-1 p-2 w-full border rounded-md"
+                    />
+                </div>
 
-                    <Box className="flex flex-1 flex-col gap-2">
-                        <Label className="text-black text-md" htmlFor="picture">
-                            Image
-                        </Label>
-                        <input
-                            type="file"
-                            id="prodImage"
-                            {...register("img", {
-                                required: {
-                                    value: true,
-                                    message:
-                                        "The post picture is required. Please upload a picture.",
-                                },
-                            })}
-                            name="prodImage"
-                            onChange={handleChange}
-                            className="custom-input-field h-min w-full flex-1 indent-2 text-base font-normal"
-                        />
-                        {errors.img && (
-                            <Wrapper className="text-red-500 font-semibold text-xs">
-                                {errors.img.message?.toString()}
-                            </Wrapper>
-                        )}
-                    </Box>
-
-                    <Box className="text-rich-black-5 flex flex-1 flex-col items-start gap-2 text-sm">
-                        <Label className="text-black text-md" htmlFor="price">
-                            Price
-                        </Label>
-                        <input
-                            type="text"
-                            id="price"
-                            {...register("price", {
-                                required: {
-                                    value: true,
-                                    message: "Enter the price",
-                                },
-                            })}
-                            placeholder="Enter Product Price"
-                            className="custom-input-field w-full flex-1 indent-2 text-base text-black font-normal"
-                        />
-                        {errors.price && (
-                            <Wrapper className="text-red-500 font-semibold text-xs">
-                                {errors.price.message?.toString()}
-                            </Wrapper>
-                        )}
-                    </Box>
-
-                    <Box className="text-rich-black-5 flex flex-1 flex-col items-start gap-2 text-sm">
-                        <Label className="text-black text-md" htmlFor="price">
-                            Price
-                        </Label>
-                        <input
-                            type="text"
-                            id="quantity"
-                            {...register("quantity", {
-                                required: {
-                                    value: true,
-                                    message: "Enter the quantity",
-                                },
-                            })}
-                            placeholder="Enter Product Quantity"
-                            className="custom-input-field w-full flex-1 indent-2 text-base font-normal"
-                        />
-                        {errors.quantity && (
-                            <Wrapper className="text-red-500 font-semibold text-xs">
-                                {errors.quantity.message?.toString()}
-                            </Wrapper>
-                        )}
-                    </Box>
-
-                    <DialogFooter>
-                        <Button
-                            type="submit"
-                            disabled={isSubmitting}
-                            className="text-rich-black-900 bg-pure-gray-300 w-20 disabled:bg-pure-gray-400 hover:bg-pure-gray-400 disabled:text-rich-black-5 flex select-none flex-col items-stretch justify-center overflow-hidden rounded-md px-2 py-3 font-bold hover:scale-[0.99]"
-                        >
-                            Post
-                        </Button>
-                    </DialogFooter>
-                </Box>
+                <div className="mb-4">
+                    <label
+                        htmlFor="prodQuantity"
+                        className="block text-sm font-medium text-black"
+                    >
+                        Quantity
+                    </label>
+                    <input
+                        type="text"
+                        id="prodQuantity"
+                        name="prodQuantity"
+                        value={formData.prodQuantity}
+                        onChange={handleChange}
+                        className="text-black mt-1 p-2 w-full border rounded-md"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label
+                        htmlFor="prodQuantity"
+                        className="block text-sm font-medium text-black"
+                    >
+                        Price
+                    </label>
+                    <input
+                        type="text"
+                        id="prodPrice"
+                        name="prodPrice"
+                        value={formData.prodPrice}
+                        onChange={handleChange}
+                        className="text-black mt-1 p-2 w-full border rounded-md"
+                    />
+                </div>
+                <div className="mb-4">
+                    <label
+                        htmlFor="category"
+                        className="block text-sm font-medium text-black"
+                    >
+                        Category
+                    </label>
+                    <select
+                        id="category"
+                        name="category"
+                        value={formData.category}
+                        // onInput={(e) => formData({ role: e.target.value })}
+                        onChange={handleChange}
+                        className="mt-1 p-2 w-full border rounded-md"
+                        style={{ color: "black" }}
+                    >
+                        {PRODUCT_CATEGORY.map((category, index) => (
+                            <option key={index} value={category}>
+                                {category}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+                <button
+                    type="submit"
+                    className="w-full bg-blue-500 text-black p-2 rounded-md hover:bg-blue-600 bg-lavender"
+                >
+                    Create
+                </button>
             </form>
         </Box>
     );
