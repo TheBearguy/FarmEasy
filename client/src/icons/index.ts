@@ -41,7 +41,7 @@ import {
     HiOutlineLogout,
 } from "react-icons/hi";
 
-import { CiChat1 } from "react-icons/ci";
+import { CiChat1, CiShoppingCart } from "react-icons/ci";
 
 import { AiOutlineEye, AiOutlineEyeInvisible, AiFillInstagram } from "react-icons/ai";
 
@@ -94,6 +94,7 @@ export {
     BiWorld,
     BiArrowBack,
     BiPurchaseTag,
+    CiShoppingCart,
     IoCall,
     IoIosPricetag,
     IoBagHandle,
