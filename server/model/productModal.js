@@ -18,14 +18,9 @@ const ProductSchema = new mongoose.Schema(
         prodQuantity: {
             type: String,
         },
-        farmerID: {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'User',
+        category: {
+            type: String,
         },
-        // category: {
-        //     type: mongoose.Schema.Types.ObjectId,
-        //     ref: 'Category',
-        // },
     },
     {
         timestamps: true,

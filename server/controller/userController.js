@@ -101,22 +101,24 @@ exports.login = async (req, res, next) => {
 
         // 1) If email and password exists :
         if (!email || !password) {
-            return next(new Error("Please provide email and password!", 400));
+            return res.status(400).json({ error: "Please provide email and password!" });
         }
 
         // 2) Verify password or email is same or not :
         const user = await User.findOne({ email }).select("+password");
 
-        // if (!user || !(await user.correctPassword(password, user.password))) {
-        //   return next(new Error('Email or Password is incorrect', 401));
+        // if (!user || !(await user.correctPasssword(password, user.password))) {
+        //     return res.status(401).json({ error: 'Email or Password is incorrect' });
         // }
 
         // 3) Send token, cuz first two steps completed 😊🫂
         createSendToken(user, 200, res);
     } catch (err) {
         console.log("ERROR :", err);
+        return res.status(500).json({ error: "Internal server error" });
     }
 };
+
 
 // ALL ARTIST PAGE GET ROUTE
 // exports.getSingleArtistSong = async (req, res) => {
