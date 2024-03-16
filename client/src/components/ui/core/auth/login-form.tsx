@@ -9,7 +9,7 @@ import { Box, Wrapper } from "@components/common/containers";
 import { Button } from "@components/common/button";
 
 import { toast } from "sonner";
-
+import { login } from "@/api/authAPI";
 type formProps = {
     email: string;
     password: string;
@@ -31,11 +31,25 @@ export const LoginForm = () => {
     };
 
     const submitLoginForm = async (data: formProps) => {
+        console.log(data);
         try {
+            const user = await login(data).catch(() => {
+                toast.error("Invalid email or password", {
+                    position: "bottom-right",
+                });
+            });
+
             toast.success("Logged in successfully", {
                 position: "bottom-right",
             });
-            navigate("/dashboard");
+
+            if (user?.role === "User") {
+                navigate("/dashboard/farmer"); //! This should be /dashboard/user
+            } else if (user?.role === "Admin") {
+                navigate("/dashboard/admin");
+            } else if (user?.role === "Farmer") {
+                navigate("/dashboard/farmer");
+            }
             reset();
         } catch (error) {
             toast.error("Invalid email or password", {

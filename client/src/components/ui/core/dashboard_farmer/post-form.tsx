@@ -39,6 +39,7 @@ function Form() {
     const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files === null || e.target.files === undefined) return;
 
+        
         toast.success("Image uploaded successfully", {
             position: "bottom-right",
         });
