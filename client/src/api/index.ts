@@ -12,3 +12,7 @@ export const authApi = {
     LOGIN: BASE_URL + "/login",
     SIGNUP: BASE_URL + "/signup",
 };
+
+export const productApi = {
+    ADD_PRODUCT: BASE_URL + "/postProduct",
+};

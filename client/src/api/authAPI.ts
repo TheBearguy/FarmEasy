@@ -8,9 +8,10 @@ export const login = async (data: { email: string; password: string }) => {
             .then((response) => {
                 return response.data;
             });
-        if (response.message) {
-            const token = response.data.token;
 
+        if (response.message) {
+            const token = response.token;
+            
             localStorage.setItem("token", token);
 
             return response.data.user;

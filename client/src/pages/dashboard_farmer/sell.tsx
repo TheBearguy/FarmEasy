@@ -23,6 +23,7 @@ export default function Feed() {
     useEffect(() => {
         async function fetchPosts() {
             try {
+                
                 toast.success("Products fetched successfully", {
                     position: "bottom-right",
                 });
@@ -35,8 +36,6 @@ export default function Feed() {
 
         fetchPosts();
     }, []);
-
-    console.log(product);
 
     return (
         <Main className="space-y-6">

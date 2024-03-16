@@ -17,6 +17,8 @@ import {
     DashboardFarmerLayout,
 } from "@/layouts";
 
+import { OpenRoute, PrivateRoute } from "@/routes";
+
 const Home = lazy(() => import("@/pages/home"));
 const Login = lazy(() => import("@/pages/login"));
 const Signup = lazy(() => import("@/pages/signup"));
@@ -72,7 +74,9 @@ const router = createBrowserRouter(
                     index
                     element={
                         <Loading>
-                            <Dashboard_Admin />
+                            <PrivateRoute>
+                                <Dashboard_Admin />
+                            </PrivateRoute>
                         </Loading>
                     }
                 />
@@ -81,7 +85,9 @@ const router = createBrowserRouter(
                     path="convert-to-pdf"
                     element={
                         <Loading>
-                            <ConvertToPDF />
+                            <PrivateRoute>
+                                <ConvertToPDF />
+                            </PrivateRoute>
                         </Loading>
                     }
                 />
@@ -92,7 +98,9 @@ const router = createBrowserRouter(
                     index
                     element={
                         <Loading>
-                            <Dashboard_Farmer />
+                            <PrivateRoute>
+                                <Dashboard_Farmer />
+                            </PrivateRoute>
                         </Loading>
                     }
                 />
@@ -101,7 +109,9 @@ const router = createBrowserRouter(
                     path="chat"
                     element={
                         <Loading>
-                            <Chat />
+                            <PrivateRoute>
+                                <Chat />
+                            </PrivateRoute>
                         </Loading>
                     }
                 />
@@ -110,7 +120,9 @@ const router = createBrowserRouter(
                     path="buy"
                     element={
                         <Loading>
-                            <Buy />
+                            <PrivateRoute>
+                                <Buy />
+                            </PrivateRoute>
                         </Loading>
                     }
                 />
@@ -119,7 +131,9 @@ const router = createBrowserRouter(
                     path="sell"
                     element={
                         <Loading>
-                            <Sell />
+                            <PrivateRoute>
+                                <Sell />
+                            </PrivateRoute>
                         </Loading>
                     }
                 />

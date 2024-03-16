@@ -21,12 +21,14 @@ import {
 import { PRODUCT_CATEGORY } from "@/data/product_category";
 import { ProductProps } from "@/types";
 
+import { addProduct } from "@/api/productAPI";
+
 interface formProps extends ProductProps {}
 
 import { toast } from "sonner";
 
 function Form() {
-    const [imageUrl, setImageUrl] = useState<string>("");
+    const [imageUrl, setImageUrl] = useState<File>();
 
     const {
         register,
@@ -39,19 +41,34 @@ function Form() {
     const handleChange = async (e: ChangeEvent<HTMLInputElement>) => {
         if (e.target.files === null || e.target.files === undefined) return;
 
-        
+        setImageUrl(e.target.files[0]);
+
+        console.log(e.target.files[0]);
         toast.success("Image uploaded successfully", {
             position: "bottom-right",
         });
     };
 
     const submitPostForm = async (data: formProps) => {
+        console.log({
+            ...data,
+            img: data.img[0],
+        });
+
         try {
+            const res = await addProduct({
+                ...data,
+                img: imageUrl,
+            }).then((res) => {
+                console.log(res);
+                return res;
+            });
+
             toast.success("Post added successfully", {
                 position: "bottom-right",
             });
 
-            window.location.reload();
+            // window.location.reload();
             reset();
         } catch (error) {
             const errorObject = {
@@ -151,7 +168,7 @@ function Form() {
                         </Label>
                         <input
                             type="file"
-                            id="picture"
+                            id="prodImage"
                             {...register("img", {
                                 required: {
                                     value: true,
@@ -159,6 +176,7 @@ function Form() {
                                         "The post picture is required. Please upload a picture.",
                                 },
                             })}
+                            name="prodImage"
                             onChange={handleChange}
                             className="custom-input-field h-min w-full flex-1 indent-2 text-base font-normal"
                         />
@@ -175,8 +193,8 @@ function Form() {
                         </Label>
                         <input
                             type="text"
-                            id="name"
-                            {...register("name", {
+                            id="price"
+                            {...register("price", {
                                 required: {
                                     value: true,
                                     message: "Enter the price",

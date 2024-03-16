@@ -16,6 +16,7 @@ import {
 } from "@components/common/dropdown-menu";
 
 import { MobileSidebar } from "./sidebar";
+import { toast } from "sonner";
 
 const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
     return (
@@ -26,7 +27,8 @@ const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                     <Link
                         className="flex items-center gap-2 pl-4"
                         to="https://github.com/Kiranism/next-shadcn-dashboard-starter"
-                        target="_blank">
+                        target="_blank"
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             viewBox="0 0 24 24"
@@ -35,7 +37,8 @@ const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                             strokeWidth="2"
                             strokeLinecap="round"
                             strokeLinejoin="round"
-                            className="mr-2 h-6 w-6">
+                            className="mr-2 h-6 w-6"
+                        >
                             <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
                         </svg>
                     </Link>
@@ -57,7 +60,8 @@ const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="mr-2 h-6 w-6">
+                        className="mr-2 h-6 w-6"
+                    >
                         <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
                     </svg>
                 </Box>
@@ -81,6 +85,11 @@ const Navbar: React.FC = () => {
 
     const handleLogOut = () => {
         //! add the logic here for logging out the user
+        localStorage.clear();
+        toast.success("Logged out successfully", {
+            position: "bottom-right",
+        });
+        window.location.reload();
     };
 
     useEffect(() => {
@@ -117,7 +126,8 @@ const Navbar: React.FC = () => {
                         <Typography
                             variant="p"
                             affects="removePMargin"
-                            className="text-rt-alpha-amber-1200 text-xs leading-none">
+                            className="text-rt-alpha-amber-1200 text-xs leading-none"
+                        >
                             {user.email}
                         </Typography>
                     </DropdownMenuLabel>
