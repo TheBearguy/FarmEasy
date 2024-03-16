@@ -21,21 +21,27 @@ import {
 
 import { ProductProps } from "@/types";
 
+interface ProductCardProps extends ProductProps {
+    handleClick?: () => void;
+}
+
 export default function ProductCard({
     category,
     description,
     img,
     name,
     price,
-}: ProductProps) {
+    handleClick,
+}: ProductCardProps) {
     const [quantity, setQuantity] = useState(0);
+
     return (
-        <Card className="w-[350px] bg-slate-300">
+        <Card className="w-[350px]">
             <CardHeader className="rounded-md overflow-hidden">
                 <img
                     src={img}
-                    alt={name}
-                    className="w-full h-40 object-cover rounded-md"
+                    alt="STORE CARD IMAGE"
+                    className="rounded-xl transform overflow-hidden bg-white duration-200 hover:scale-[1.03] cursor-pointer"
                 />
             </CardHeader>
             <CardContent>
@@ -50,7 +56,11 @@ export default function ProductCard({
                         </DialogHeader>
 
                         <Box>
-                            <img src={img} className="rounded-lg" />
+                            <img
+                                src={img}
+                                alt="STORE CARD IMAGE"
+                                className="rounded-xl"
+                            />
                         </Box>
 
                         <Box className="flex flex-row items-center gap-10">
@@ -85,7 +95,7 @@ export default function ProductCard({
                         +
                     </Button>
                 </Box>
-                <Button>
+                <Button onClick={handleClick}>
                     Add To Cart &nbsp;<b>${price}</b>
                 </Button>
             </CardFooter>

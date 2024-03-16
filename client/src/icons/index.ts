@@ -61,7 +61,10 @@ import { RxDashboard } from "react-icons/rx";
 
 import { MdInsertLink } from "react-icons/md";
 
+import { RiDeleteBin6Line } from "react-icons/ri";
+
 export {
+    RiDeleteBin6Line,
     FiUsers,
     FaStar,
     FaHeart,
@@ -113,7 +116,7 @@ export {
     IoMdMenu,
     RxDashboard,
     MdInsertLink,
-    CiChat1
+    CiChat1,
 };
 
 export type { IconType };
