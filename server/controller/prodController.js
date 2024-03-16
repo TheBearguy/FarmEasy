@@ -1,4 +1,5 @@
 const Product = require("./../model/productModal");
+const User = require("./../model/userModal");
 
 const fs = require("fs");
 
@@ -39,9 +40,12 @@ exports.postProduct = async (req, res, next) => {
             prodDescription: req.body.prodDescription,
             prodPrice: req.body.prodPrice,
             prodQuantity: req.body.prodQuantity,
-            farmerID : req.user._id
         });
-        
+
+        await User.findByIdAndUpdate(req.user._id, {
+            $push: { Products: products._id },
+        })
+
         console.log("PRODUCTS", products);
 
         await products.save();
@@ -57,6 +61,14 @@ exports.getAllProducts = (req, res) => {
         // const products = req.user._id;
         console.log("REQ USER");
         res.status(200).json("Hello");
+    } catch (err) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
+
+exports.getSingleProduct = (req, res) => {
+    try {
+        
     } catch (err) {
         res.status(500).json({ message: "Internal server error" });
     }
