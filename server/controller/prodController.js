@@ -40,6 +40,7 @@ exports.postProduct = async (req, res, next) => {
             prodDescription: req.body.prodDescription,
             prodPrice: req.body.prodPrice,
             prodQuantity: req.body.prodQuantity,
+            farmerID : req.user._id
         });
 
         await User.findByIdAndUpdate(req.user._id, {
@@ -73,3 +74,26 @@ exports.getSingleProduct = (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 }
+
+exports.getFarmerProducts = async (req, res, next) => {
+    try {
+        const farmerID = req.user._id;
+
+        const productDetails = await User.findById({ _id: farmerID }).populate()
+
+        if (!productDetails) {
+            res.status(500).json({ message: "Internal server error" });
+        }
+
+        return res.status(200).json({
+            message: "Success",
+            productDetails
+    });
+    } catch (err) {
+        return res.status(500).json({
+            message: "Failed to get products",
+            error: 'Error in fetching farmers products',
+            message: err.message,
+        });
+    }
+};

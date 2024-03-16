@@ -21,6 +21,9 @@ const ProductSchema = new mongoose.Schema(
         category: {
             type: String,
         },
+        farmerID : {
+            type: String,
+        }
     },
     {
         timestamps: true,

@@ -23,13 +23,13 @@ function Hero() {
                 <div className="pt-5 flex flex-col md:flex-row gap-3 md:gap-5 md:py-10">
                     <button
                         onClick={() => navigate("/signup")}
-                        className="md:text-[20px] md:py-4 md:px-8 py-2 px-4 bg-gradient-to-r from-lavender via-pink-400 to-dark_purple rounded-xl text-slate-200 hover:bg-dark_purple active:bg-light_purple"
+                        className="md:text-[20px] md:py-4 md:px-8 py-2 px-4 bg-gradient-to-r from-rt-normal-purple-1100 via-pink-400 to-rt-alpha-pink-1100 rounded-xl text-slate-200 hover:bg-dark_purple active:bg-light_purple"
                     >
                         Get Started
                     </button>
                     <button
                         onClick={() => navigate("/artist")}
-                        className="md:text-[20px] md:py-4 md:px-4 py-2 px-4 border-2 border-solid border-slate-200 rounded-xl bg-light_gray"
+                        className="md:text-[20px] md:py-4 md:px-4 py-2 px-4 border-2 border-solid border-slate-200 bg-gray-900 text-white rounded-xl bg-light_gray"
                     >
                         Explore more &rarr;
                     </button>

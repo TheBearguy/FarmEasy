@@ -17,7 +17,7 @@ import {
     DashboardFarmerLayout,
 } from "@/layouts";
 
-import { OpenRoute, PrivateRoute } from "@/routes";
+import { PrivateRoute } from "@/routes";
 
 const Home = lazy(() => import("@/pages/home"));
 const Login = lazy(() => import("@/pages/login"));
@@ -32,6 +32,8 @@ const Dashboard_Farmer = lazy(() => import("@/pages/dashboard_farmer/main"));
 const Chat = lazy(() => import("@/pages/dashboard_farmer/chat"));
 const Buy = lazy(() => import("@/pages/dashboard_farmer/buy"));
 const Sell = lazy(() => import("@/pages/dashboard_farmer/sell"));
+
+const User = lazy(() => import("@/pages/user"))
 
 const NotFound = lazy(() => import("@/pages/not-found"));
 
@@ -138,6 +140,8 @@ const router = createBrowserRouter(
                     }
                 />
             </Route>
+
+            <Route path="user-store" element={<User/>}/>
 
             <Route
                 path="*"
