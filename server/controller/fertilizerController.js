@@ -6,8 +6,8 @@ const multer = require("multer");
 const uploadMiddleware = multer({ dest: "./uploads/" });
 
 // UPLOAD FILE -
-exports.uploadFile = uploadMiddleware.single("prodImage");
-exports.postProduct = async (req, res, next) => {
+exports.uploadFile = uploadMiddleware.single("fertImage");
+exports.postFertilizers = async (req, res, next) => {
     try {
         console.log("REQ FILE :", req.file);
 
@@ -21,24 +21,22 @@ exports.postProduct = async (req, res, next) => {
 
         // 1) Check if the user has all the fields filled -
         const {
-            prodName,
-            prodImage = newPath,
-            prodPrice,
-            prodDescription,
-            prodQuantity,
+            fertName,
+            fertImage = newPath,
+            fertPrice,
+            fertDescription,
+            fertQuantity,
             category
         } = req.body;
 
-        console.log("REQ BODY", req.body);
-
         // 3) If above both checks are passed, then start the process of creating new user :
         const fertilizers = await Fertilizer.create({
-            prodName: req.body.prodName,
-            prodImage: (req.body.prodImage = newPath),
+            fertName: req.body.fertName,
+            fertImage: (req.body.fertImage = newPath),
             category: req.body.category,
-            prodDescription: req.body.prodDescription,
-            prodPrice: req.body.prodPrice,
-            prodQuantity: req.body.prodQuantity
+            fertDescription: req.body.fertDescription,
+            fertPrice: req.body.fertPrice,
+            fertQuantity: req.body.fertQuantity
         });
 
         console.log("FERTILIZERS : ", fertilizers);
@@ -52,7 +50,7 @@ exports.postProduct = async (req, res, next) => {
 
 exports.getAllFertilizers = async (req, res) => {
     try {
-        // const products = await Product.find({}).exec();
+        // const fertucts = await fertuct.find({}).exec();
         const fertilizers = await Fertilizer.find({}).exec();
 
         res.status(200).json({ NoOfFertilizers: fertilizers.length, fertilizers});

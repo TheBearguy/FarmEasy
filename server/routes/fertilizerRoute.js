@@ -3,7 +3,7 @@ const router = express.Router();
 const fertilizerController = require("./../controller/fertilizerController");
 const authController = require("./../controller/userController");
 
-router.post("/postProduct", prodController.uploadFile, authController.protect, prodController.postProduct);
+router.post("/postFertilizers", fertilizerController.uploadFile, authController.protect, fertilizerController.postFertilizers);
 router.get("/getAllFertilizers", authController.protect, fertilizerController.getAllFertilizer);
 
 module.exports = router;
