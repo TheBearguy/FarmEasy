@@ -31,10 +31,10 @@ export interface ILeftChart {
 }
 
 export interface ProductProps {
-    img: string;
-    name: string;
+    prodImage: string;
+    prodName: string;
     category: string;
-    description: string;
-    price: number;
-    quantity: number;
+    prodDescription: string;
+    prodPrice: number;
+    prodQuantity: number;
 }

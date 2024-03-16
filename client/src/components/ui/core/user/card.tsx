@@ -22,15 +22,15 @@ import {
 import { ProductProps } from "@/types";
 
 interface ProductCardProps extends ProductProps {
-    handleClick?: () => void;
+    handleClick: () => void;
 }
 
 export default function ProductCard({
     category,
-    description,
-    img,
-    name,
-    price,
+    prodDescription,
+    prodImage,
+    prodName,
+    prodPrice,
     handleClick,
 }: ProductCardProps) {
     const [quantity, setQuantity] = useState(0);
@@ -39,7 +39,7 @@ export default function ProductCard({
         <Card className="w-[350px]">
             <CardHeader className="rounded-md overflow-hidden">
                 <img
-                    src={img}
+                    src={`http://localhost:5001/${prodImage}`}
                     alt="STORE CARD IMAGE"
                     className="rounded-xl transform overflow-hidden bg-white duration-200 hover:scale-[1.03] cursor-pointer"
                 />
@@ -51,13 +51,15 @@ export default function ProductCard({
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px] space-y-5">
                         <DialogHeader>
-                            <DialogTitle>{name}</DialogTitle>
-                            <DialogDescription>{description}</DialogDescription>
+                            <DialogTitle>{prodName}</DialogTitle>
+                            <DialogDescription className="text-black">
+                                {prodDescription}
+                            </DialogDescription>
                         </DialogHeader>
 
                         <Box>
                             <img
-                                src={img}
+                                src={`http://localhost:5001/${prodImage}`}
                                 alt="STORE CARD IMAGE"
                                 className="rounded-xl"
                             />
@@ -96,7 +98,7 @@ export default function ProductCard({
                     </Button>
                 </Box>
                 <Button onClick={handleClick}>
-                    Add To Cart &nbsp;<b>${price}</b>
+                    Add To Cart &nbsp;<b>${prodPrice}</b>
                 </Button>
             </CardFooter>
         </Card>

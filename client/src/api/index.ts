@@ -15,4 +15,5 @@ export const authApi = {
 
 export const productApi = {
     ADD_PRODUCT: BASE_URL + "/postProduct",
+    GET_ALL_USER_PRODUCTS: BASE_URL + "/getAllProducts",
 };

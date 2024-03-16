@@ -8,19 +8,61 @@ import { CiShoppingCart } from "@/icons";
 import { Typography } from "@components/common/typography";
 import Card from "@components/core/user/card";
 
+import { ProductProps } from "@/types";
+import { productApi } from "@/api";
 import { toast } from "sonner";
 
 export default function User() {
     const navigate = useNavigate();
 
-    const [cart, setCart] = useState([]);
+    const [cart, setCart] = useState<ProductProps[]>([]);
+    const [allProducts, setAllProducts] = useState([]);
 
-    const handleClick = () => {
+    const handleClick = (product: ProductProps) => {
+        if (cart.includes(product)) {
+            toast.error("Product already added to cart", {
+                position: "bottom-right",
+                duration: 3000,
+            });
+            return;
+        }
+
+        setCart((prev) => {
+            const newCart = [...prev, product];
+            return newCart;
+        });
+
+        console.log(cart);
         toast.success("Product added to cart", {
             position: "bottom-right",
             duration: 3000,
         });
     };
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            const token = localStorage.getItem("token");
+
+            try {
+                const data = await fetch(productApi.GET_ALL_USER_PRODUCTS, {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                }).then((res) => res.json());
+
+                console.log(data);
+
+                setAllProducts(data);
+            } catch (error) {
+                toast.error("Failed to fetch products", {
+                    position: "bottom-right",
+                    duration: 3000,
+                });
+            }
+        };
+
+        fetchProducts();
+    }, []);
 
     return (
         <Main className="flex flex-col justify-center items-center">
@@ -49,26 +91,19 @@ export default function User() {
             </Box>
 
             <Box className="mt-10 px-5 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:gap-20 md:gap-10 gap-5">
-                {Array.from({ length: 10 }).map((_, i) => (
-                    <Card
-                        category="Electronics"
-                        description="This is a description of the product"
-                        img="https://www.shutterstock.com/image-vector/vector-illustration-detailed-glossy-black-260nw-613618706.jpg"
-                        name="Iphone 13 Pro Max"
-                        price={1500}
-                        quantity={0}
-                        key={i}
-                    />
-                ))}
-                <Card
-                    category="Electronics"
-                    description="This is a description of the product"
-                    img="https://www.shutterstock.com/image-vector/vector-illustration-detailed-glossy-black-260nw-613618706.jpg"
-                    name="Iphone 13 Pro Max"
-                    price={1500}
-                    quantity={0}
-                    handleClick={handleClick}
-                />
+                {allProducts.length > 0 &&
+                    allProducts.map((product: ProductProps, index) => {
+                        const img = product.prodImage?.split("\\")[1];
+
+                        return (
+                            <Card
+                                key={index}
+                                {...product}
+                                prodImage={img}
+                                handleClick={() => handleClick(product)}
+                            />
+                        );
+                    })}
             </Box>
         </Main>
     );

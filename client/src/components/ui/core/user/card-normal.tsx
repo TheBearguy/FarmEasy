@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Box } from "@components/common/containers";
 import { RiDeleteBin6Line } from "@/icons";
 
 import { ProductProps } from "@/types";
