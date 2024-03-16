@@ -7,9 +7,9 @@ import {
     DialogTrigger,
 } from "@components/common/dialog";
 
-import { PRODUCT_CATEGORY } from "@/data/product_category";
+import { PRODUCT_CATEGORY_FERTILIZER } from "@/data/product_category";
 
-import { productApi } from "@/api/index";
+import { adminApi } from "@/api/index";
 
 function Form() {
     const [formData, setFormData] = useState({
@@ -46,7 +46,6 @@ function Form() {
         console.log("FormData : ", formData);
 
         const token = localStorage.getItem("token");
-        console.log(token);
 
         const requestOptions = {
             method: "POST",
@@ -57,7 +56,7 @@ function Form() {
         };
 
         try {
-            await fetch(productApi.ADD_PRODUCT, requestOptions);
+            await fetch(adminApi.ADD_FERTILIZER, requestOptions);
         } catch (error) {
             console.error("Error occurred:", error);
         }
@@ -164,7 +163,7 @@ function Form() {
                         className="mt-1 p-2 w-full border rounded-md"
                         style={{ color: "black" }}
                     >
-                        {PRODUCT_CATEGORY.map((category, index) => (
+                        {PRODUCT_CATEGORY_FERTILIZER.map((category, index) => (
                             <option key={index} value={category}>
                                 {category}
                             </option>
@@ -192,7 +191,7 @@ function Post() {
                             variant="outline"
                             className="bg-custom-border hover:bg-custom-hover transition-all duration-300 font-bold"
                         >
-                            Add Post
+                            Add Fertilizer
                         </Button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px]">
