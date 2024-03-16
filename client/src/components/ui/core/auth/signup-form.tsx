@@ -18,6 +18,7 @@ const SignUp = () => {
     const handleChange = (e) => {
         if (e.target.name === "file") {
             setFormData({ ...formData, file: e.target.files[0] });
+            console.log("IMAGE ", e.target.files[0]);
         } else {
             setFormData({ ...formData, [e.target.name]: e.target.value });
         }
@@ -32,6 +33,7 @@ const SignUp = () => {
         formDataToSend.append("password", formData.password);
         formDataToSend.append("role", formData.role);
         formDataToSend.append("file", formData.file); // Append file
+        console.log("Formdata - ", formData.file);
 
         console.log("FormDataToSend : ", formDataToSend);
         console.log("FormData : ", formData);
