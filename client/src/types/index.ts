@@ -24,3 +24,8 @@ export interface NavGroupWithOptionalChildren extends NavItem {
 
 export type MainNavbar = NavGroupWithOptionalChildren;
 export type Sidebar = NavGroupWithChildren;
+
+export interface ILeftChart {
+    name: string;
+    total: number;
+}

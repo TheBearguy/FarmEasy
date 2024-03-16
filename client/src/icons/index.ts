@@ -41,6 +41,8 @@ import {
     HiOutlineLogout,
 } from "react-icons/hi";
 
+import { CiChat1 } from "react-icons/ci";
+
 import { AiOutlineEye, AiOutlineEyeInvisible, AiFillInstagram } from "react-icons/ai";
 
 import { BiWorld, BiArrowBack } from "react-icons/bi";
@@ -107,6 +109,7 @@ export {
     IoMdMenu,
     RxDashboard,
     MdInsertLink,
+    CiChat1
 };
 
 export type { IconType };
