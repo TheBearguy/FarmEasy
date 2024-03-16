@@ -10,6 +10,8 @@ const dotenv = require("dotenv");
 const userRoutes = require("./routes/userRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const prodRoutes = require("./routes/prodRoutes");
+const fertilizerRoutes = require("./routes/fertilizerRoute");
+
 
 // INSTANCE OF EXPRESS :
 const app = express();
@@ -54,6 +56,7 @@ app.get("/admin", (req, res) => {
 app.use("/api/v1/users", userRoutes);
 app.use("/api/v1/users", adminRoutes);
 app.use("/api/v1/users", prodRoutes);
+app.use("/api/v1/users", fertilizerRoutes);
 
 // ANY UNHANDLED ROUTE :
 app.all("*", (req, res, next) => {
