@@ -8,7 +8,7 @@ function Hero() {
             <div className="absolute top-[100px] w-[200px] h-[160px] -z-10 inset-0 md:w-[500px]"></div>
 
             <div className="flex flex-col justify-center mt-20 container mx-auto p-6 font-black md:items-center">
-                <h1 className="text-[40px] text-left mb-6 leading-[1.2] md:text-[4.5rem] md:leading-snug md:items-center md:text-center md:-mt-14 text-white">
+                <h1 className="text-[40px] text-left mb-6 leading-[1.2] md:text-[4.5rem] md:leading-snug md:items-center md:text-center md:-mt-14 ">
                     TO GIVE YOU BACK THE <br />{" "}
                     <span className="text-lavender font-sans">CONTROL</span> OF
                     YOUR{" "}
