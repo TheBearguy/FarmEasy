@@ -215,10 +215,10 @@ export default {
                     yellow: "#F09819",
                     orange: "#E65C00",
                     "light-yellow": "#F9D423",
-                    color: normal.normalPink[700],
-                    border: normal.normalPink[1100],
-                    light: normal.normalPink[400],
-                    hover: normal.normalPink[500],
+                    color: normal.normalTeal[700],
+                    border: normal.normalTeal[1100],
+                    light: normal.normalTeal[400],
+                    hover: normal.normalTeal[500],
                 },
                 //? below code is not working || not useable
                 gradient: {

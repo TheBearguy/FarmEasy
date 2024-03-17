@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 
 import { Button } from "@components/common/button";
@@ -77,10 +77,12 @@ const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
 };
 
 const Navbar: React.FC = () => {
+    const navigate = useNavigate();
+
     const [user, setUser] = useState({
         name: "Kiran Goel",
         email: "demo@gmail.com",
-        profileImg: "",
+        file: "",
     });
 
     const handleLogOut = () => {
@@ -114,7 +116,7 @@ const Navbar: React.FC = () => {
                 <DropdownMenuTrigger asChild className="px-0 outline-none ">
                     <Button className="rounded-full overflow-hidden aspect-square bg-rt-normal-slate-400 active:bg-rt-normal-slate-400 focus:bg-rt-normal-slate-400 hover:bg-rt-normal-slate-400 dark:bg-rt-normal-slate-1200 dark:active:bg-rt-normal-slate-1200 dark:focus:bg-rt-normal-slate-1200 dark:hover:bg-rt-normal-slate-1200 px-0">
                         <img
-                            src={`http://localhosy${user.file.split("\\")[1]}`}
+                            src={`http://localhost:5001/${user.file?.split("\\")[1]}`}
                             alt="Profile Image"
                             className="rounded-full aspect-square"
                         />
@@ -135,12 +137,13 @@ const Navbar: React.FC = () => {
                     </DropdownMenuLabel>
 
                     <DropdownMenuSeparator className="border-custom-border bg-custom-border" />
-                    <DropdownMenuItem>Profile</DropdownMenuItem>
-                    <DropdownMenuItem>Billing</DropdownMenuItem>
-                    <DropdownMenuItem>Team</DropdownMenuItem>
-                    <DropdownMenuItem>Subscription</DropdownMenuItem>
+                    <DropdownMenuItem
+                        onClick={() => navigate("/dashboard/farmer/")}
+                    >
+                        Profile
+                    </DropdownMenuItem>
 
-                    <DropdownMenuSeparator className="border-custom-border bg-custom-border" />
+                    <DropdownMenuSeparator className="border-custom-border bg-custom-border hover:bg-custom-border" />
                     <DropdownMenuItem onClick={handleLogOut}>
                         Logout
                     </DropdownMenuItem>
