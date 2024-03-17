@@ -139,6 +139,7 @@ const Navbar: React.FC = () => {
                     <DropdownMenuSeparator className="border-custom-border bg-custom-border" />
                     <DropdownMenuItem
                         onClick={() => navigate("/dashboard/farmer/")}
+                        className="hover:bg-custom-border"
                     >
                         Profile
                     </DropdownMenuItem>

@@ -12,8 +12,6 @@ import { ProductProps } from "@/types";
 import { productApi } from "@/api";
 import { toast } from "sonner";
 
-import Logo from '/assets'
-
 export default function User() {
     const navigate = useNavigate();
 
@@ -72,7 +70,6 @@ export default function User() {
         <Main className="flex flex-col items-center space-y-10">
             <Box className="w-full flex justify-between px-20 items-center">
                 <Box>
-                    <img src="/asset"/>
                     <Box>
                         <Typography variant="h4" className="text-left">
                             FarmEasy
