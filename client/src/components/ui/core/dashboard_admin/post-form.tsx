@@ -59,6 +59,8 @@ function Form() {
 
         try {
             await fetch(adminApi.ADD_FERTILIZER, requestOptions);
+
+            window.location.reload();
         } catch (error) {
             console.error("Error occurred:", error);
         }
