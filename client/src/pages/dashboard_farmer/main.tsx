@@ -13,7 +13,7 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
         email: "",
         phone: "",
         file: "",
-    }); // Set initial state to null or undefined
+    });
 
     useEffect(() => {
         const userString = localStorage.getItem("User");
@@ -30,7 +30,7 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
         } catch (error) {
             console.error("Error parsing user data from localStorage:", error);
         }
-    }, []); // Empty dependency array ensures this effect runs only once after initial render
+    }, []);
 
     console.log("Author", author);
 
