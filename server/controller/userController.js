@@ -120,21 +120,6 @@ exports.login = async (req, res, next) => {
 };
 
 
-// ALL ARTIST PAGE GET ROUTE
-// exports.getSingleArtistSong = async (req, res) => {
-//     try {
-//         console.log("REQ USER : ", req.user);
-
-//         // Fetch users where role equals 'artist'
-//         const artists = await User.find({ role: "artist" }, "name file");
-
-//         res.status(200).json(artists); // Send only the names of artists in the response
-//     } catch (err) {
-//         console.error("ERROR", err);
-//         res.status(500).json({ message: "Internal server error" });
-//     }
-// };
-
 // GET SINGLE ARTIST INFO -
 exports.getCurrentUserDetails = async (req, res) => {
     try {
@@ -150,27 +135,6 @@ exports.getCurrentUserDetails = async (req, res) => {
         res.status(500).json({ message: "Internal server error" });
     }
 };
-
-// NOT REQURIED :
-// exports.getAllUsers = async (req, res) => {
-//   try {
-//     // Fetch all users
-//     const users = await User.find({});
-//     res.status(200).json(users); // Send all users in the response
-//   } catch (err) {
-//     console.error("ERROR", err);
-//     res.status(500).json({ message: "Internal server error" });
-//   }
-// };
-
-// SINGLE USER NAME -
-// exports.artistProfile = async (req, res) => {
-//   try {
-//     const getArtistProfile = await User.find({});
-//   } catch (error) {
-
-//   }
-// };
 
 // JWT TOKEN VALIDATION -
 exports.protect = async (req, res, next) => {
