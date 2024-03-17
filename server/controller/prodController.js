@@ -80,21 +80,23 @@ exports.getFarmerProducts = async (req, res, next) => {
     try {
         const farmerID = req.user._id;
 
-        const productDetails = await User.findById({ _id: farmerID }).populate()
+        // Find products where farmerID matches the user's _id
+        const productDetails = await Product.find({ farmerID: farmerID });
 
         if (!productDetails) {
-            res.status(500).json({ message: "Internal server error" });
+            return res.status(404).json({ message: "No products found for this farmer" });
         }
 
         return res.status(200).json({
             message: "Success",
             productDetails
-    });
+        });
     } catch (err) {
         return res.status(500).json({
             message: "Failed to get products",
-            error: 'Error in fetching farmers products',
-            message: err.message,
+            error: 'Error in fetching farmer products',
+            errorMessage: err.message,
         });
     }
 };
+
