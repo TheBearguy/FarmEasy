@@ -80,13 +80,13 @@ const SignUp = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center">
-            <div className=" w-96 p-8 rounded-md shadow-md">
+            <div className=" w-96 p-8 rounded-md shadow-md bg-green-400">
                 <form onSubmit={handleSubmit}>
                     <div className="mb-4">
                         {" "}
                         <label
                             htmlFor="name"
-                            className="block text-sm font-medium text-white"
+                            className="block text-sm font-medium text-black"
                         >
                             Name
                         </label>
@@ -102,7 +102,7 @@ const SignUp = () => {
                     <div className="mb-4">
                         <label
                             htmlFor="email"
-                            className="block text-sm font-medium text-white"
+                            className="block text-sm font-medium text-black"
                         >
                             Email
                         </label>
@@ -119,7 +119,7 @@ const SignUp = () => {
                     <div className="mb-4">
                         <label
                             htmlFor="walletAddress"
-                            className="block text-sm font-medium text-white"
+                            className="block text-sm font-medium text-black"
                         >
                             Upload you User Profile
                         </label>
@@ -128,14 +128,14 @@ const SignUp = () => {
                             id="file"
                             name="file" // Change the name attribute to "file"
                             onChange={handleChange}
-                            className="text-white mt-1 p-2 w-full border rounded-md"
+                            className="text-black mt-1 p-2 w-full border rounded-md"
                         />
                     </div>
 
                     <div className="mb-4">
                         <label
                             htmlFor="password"
-                            className="block text-sm font-medium text-white"
+                            className="block text-sm font-medium text-black"
                         >
                             Password
                         </label>
@@ -151,7 +151,7 @@ const SignUp = () => {
                     <div className="mb-4">
                         <label
                             htmlFor="role"
-                            className="block text-sm font-medium text-white"
+                            className="block text-sm font-medium text-black"
                         >
                             Role
                         </label>
@@ -170,14 +170,14 @@ const SignUp = () => {
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-blue-500 text-white p-2 rounded-md hover:bg-blue-600 bg-lavender"
+                        className="w-full bg-blue-500 text-black p-2 rounded-md hover:bg-blue-600 bg-lavender"
                     >
                         SIGNUP
                     </button>
                 </form>
-                <p className="text-white mt-4 text-center">
+                <p className="text-black mt-4 text-center">
                     Already have an account?{" "}
-                    <Link to="/login" className="text-bold text-white">
+                    <Link to="/login" className="text-bold text-black font-semibold">
                         LogIn
                     </Link>
                 </p>
