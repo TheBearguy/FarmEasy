@@ -1,11 +1,12 @@
 import React from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
-// import { toast } from "sonner";
+import { toast } from "sonner";
 
 const PrivateRoute: React.FC<{ children?: React.ReactNode }> = ({
     children,
 }) => {
+    // const location = useLocation();
     // const userString = localStorage.getItem("User");
 
     // console.log("User", userString);
@@ -22,7 +23,7 @@ const PrivateRoute: React.FC<{ children?: React.ReactNode }> = ({
 
     // const user = userString ? JSON.parse(userString) : null;
     // console.log("User", user);
-    // if (user.role === "User") {
+    // if (user.role === "User" && !location.pathname.includes("user-store")) {
     //     return <Navigate to="/user-store" />;
     // } else if (user.role === "Farmer") {
     //     return <Navigate to="/dashboard/farmer" />;
