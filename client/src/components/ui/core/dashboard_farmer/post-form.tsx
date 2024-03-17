@@ -11,7 +11,7 @@ import { PRODUCT_CATEGORY } from "@/data/product_category";
 
 import { productApi } from "@/api/index";
 
-function Form() {
+function Form({ onClose }) {
     const [formData, setFormData] = useState({
         prodName: "",
         prodImage: "",
@@ -185,7 +185,6 @@ function Form() {
 }
 
 function Post() {
-    const [isOpen, setIsOpen] = useState(false);
 
     return (
         <Section className="flex flex-col w-full space-y-6">
@@ -193,24 +192,21 @@ function Post() {
                 <Box className="text-[1.8rem] font-bold">
                     Get the best fertilizers direct from Indian Government
                 </Box>
-                <Dialog isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
+                <Dialog>
                     <DialogTrigger asChild>
                         <Button
                             variant="outline"
-                            className="bg-custom-border text-xl py-6 rounded-md hover:border-green-600 hover:border-2 mt-5 transition-all duration-300 font-bold"
-                            onClick={() => setIsOpen(true)}
+                            className="bg-custom-border text-xl py-6 rounded-md hover:border-green-600 hover:border-2 mt-5 transition-all duration-300 font-bold"}
                         >
                             Add Products
                         </Button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px]">
-                        <Form onClose={() => setIsOpen(false)} />
+                        <Form />
                     </DialogContent>
                 </Dialog>
             </Box>
-            <Box className="flex justify-center items-center">
-                <img src="/assets/Farming.png" alt="Farming" width={700} />
-            </Box>
+            
         </Section>
     );
 }
