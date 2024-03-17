@@ -47,6 +47,12 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
         },
     ]);
 
+    const [user, setUser] = useState({
+        name: "",
+        email: "",
+        file: "",
+    });
+
     const handleSales = () => {
         setGraphData(LEFT_CHART);
         console.log("Sales");
@@ -82,6 +88,13 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                     },
                 ]);
             });
+
+            const data = localStorage.getItem("User");
+
+            if (data) {
+                const user = JSON.parse(data);
+                setUser(user);
+            }
         } catch (error) {
             toast.error("Error fetching data", {
                 position: "bottom-right",
@@ -94,11 +107,13 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
         console.log("Purchase");
     };
 
+    if (!user) return null;
+
     return (
         <Main className="flex flex-col relative top-0.5 pt-5 px-4">
             <Box className="space-y-4">
                 <Typography variant="h2" className="border-b-0 max-md:text-2xl">
-                    Hey Admin! 👋
+                    Hey {user.name}! 👋
                 </Typography>
 
                 <Box className="grid grid-rows-4 md:grid-rows-2 md:grid-cols-2 lg:grid-rows-1 lg:grid-cols-4 gap-4">

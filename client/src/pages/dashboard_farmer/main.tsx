@@ -43,7 +43,7 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
         <Main className="flex flex-col relative top-0.5 pt-5 px-4">
             <Box className="space-y-4">
                 <Typography variant="h2" className="border-b-0 max-md:text-2xl">
-                    Welcome Farmer 👋
+                    Welcome {author.name}👋
                 </Typography>
 
                 <Box className="grid max-md:grid-rows-2 lg:grid-cols-2 gap-6">

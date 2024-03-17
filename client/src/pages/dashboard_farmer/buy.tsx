@@ -18,6 +18,7 @@ export default function Buy() {
                     name="Fertilizers"
                     price={100}
                     quantity={10}
+                    
                 />
                 <Card
                     category="Seeds"
