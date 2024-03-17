@@ -197,7 +197,7 @@ function Post() {
                             className="bg-custom-border hover:bg-custom-hover transition-all duration-300 font-bold"
                             onClick={() => setIsOpen(true)}
                         >
-                            Add Post
+                            Add Products
                         </Button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px]">
