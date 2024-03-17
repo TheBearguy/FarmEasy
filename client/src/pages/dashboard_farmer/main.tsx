@@ -48,11 +48,11 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
 
                 <Box className="grid max-md:grid-rows-2 lg:grid-cols-2 gap-6">
                     <Card className="">
-                        <CardContent>
+                        <CardContent className="max-h-60 w-full">
                             <img
                                 src={`http://localhost:5001/${author.file?.split("\\")[1]}`}
                                 alt={author.name}
-                                className="w-full"
+                                className="object-cover max-h-60"
                             />
                         </CardContent>
                     </Card>

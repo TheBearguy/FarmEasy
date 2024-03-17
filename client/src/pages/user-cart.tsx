@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Wrapper } from "@components/common/containers";
 import CartItem from "@components/core/user/card-normal";
 
+import { toast } from "sonner";
 import { ProductProps } from "@/types";
 
 export default function UserCart() {
@@ -97,18 +98,43 @@ export default function UserCart() {
                                     Subtotal
                                 </div>
                                 <div className="text-md md:text-lg font-medium text-black">
-                                    &#8377; 2000.00
+                                    $
+                                    {cart.reduce(
+                                        (acc, item) =>
+                                            acc +
+                                            item.prodPrice * item.prodQuantity,
+                                        0,
+                                    )}
                                 </div>
                             </div>
+                            <p>&nbsp;</p>
+                            <div>Method: Cash on Delivery</div>
 
-                            <div className="text-sm md:text-md py-5 border-t mt-5">
+                            <div className="text-sm md:text-md py-5 border-t mt-5 text-red-400">
                                 By clicking to Checkout button, You are agreeing
                                 to our privacy policy and terms and conditions.
                             </div>
                         </div>
 
                         {/* CHECKOUT BUTTON */}
-                        <button className="bg-black text-white py-4 rounded-full w-full text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75">
+                        <button
+                            className="bg-black text-white py-4 rounded-full w-full text-lg font-medium transition-transform active:scale-95 mb-3 hover:opacity-75"
+                            onClick={() => {
+                                localStorage.removeItem("Cart");
+                                setCart([]);
+
+                                toast.success(
+                                    `The order has been created with orderID ${Math.round(100 * Math.random() * 40000)}`,
+                                    {
+                                        position: "bottom-right",
+                                        duration: 3000,
+                                    },
+                                );
+                                setTimeout(() => {
+                                    window.location.replace("/success");
+                                }, 3000);
+                            }}
+                        >
                             Checkout
                         </button>
                     </div>

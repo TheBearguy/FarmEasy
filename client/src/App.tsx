@@ -38,6 +38,7 @@ const Sell = lazy(() => import("@/pages/dashboard_farmer/sell"));
 
 const User = lazy(() => import("@/pages/user"));
 const Cart = lazy(() => import("@/pages/user-cart"));
+const Success = lazy(() => import("@/pages/success"));
 
 const NotFound = lazy(() => import("@/pages/not-found"));
 
@@ -172,6 +173,16 @@ const router = createBrowserRouter(
                     <Loading>
                         <PrivateRoute>
                             <Cart />
+                        </PrivateRoute>
+                    </Loading>
+                }
+            />
+            <Route
+                path="success"
+                element={
+                    <Loading>
+                        <PrivateRoute>
+                            <Success />
                         </PrivateRoute>
                     </Loading>
                 }

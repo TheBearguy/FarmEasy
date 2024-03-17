@@ -41,7 +41,7 @@ export default function ProductCard({
                 <img
                     src={`http://localhost:5001/${prodImage}`}
                     alt="STORE CARD IMAGE"
-                    className="rounded-xl transform overflow-hidden bg-white duration-200 hover:scale-[1.03] cursor-pointer"
+                    className="rounded-xl transform overflow-hidden max-h-40 object-contain bg-white duration-200 hover:scale-[1.03] cursor-pointer"
                 />
             </CardHeader>
             <CardContent>

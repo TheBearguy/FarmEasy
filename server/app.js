@@ -59,8 +59,8 @@ app.use("/api/v1/users", prodRoutes);
 app.use("/api/v1/users", fertilizerRoutes);
 
 // ANY UNHANDLED ROUTE :
-app.all("*", (req, res, next) => {
-  next(new Error(`Can't find ${req.originalUrl} on this server!`, 404));
-});
+// app.all("*", (req, res, next) => {
+//   next(new Error(`Can't find ${req.originalUrl} on this server!`, 404));
+// });
 
 module.exports = app;
