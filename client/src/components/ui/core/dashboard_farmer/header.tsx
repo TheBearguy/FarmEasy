@@ -22,15 +22,16 @@ import logo from "@/assets/logo.jpg";
 const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
     return (
         <Box className="fixed top-0 left-0 right-0 z-20 text-black bg-rt-normal-slate-100/5 dark:bg-rt-normal-sand-1200 border-b-2 border-b-custom-border">
-            <nav className="h-14 bg-custom-color flex items-center justify-between space-x-2 pr-2">
+            <nav className="h-14 md:p-10 py-10 bg-custom-color flex items-center justify-between space-x-2 pr-2">
                 {/* Logo goes here */}
                 <Box className="hidden lg:block">
                     <Link
-                        className="flex items-center gap-2 pl-4"
+                        className="flex items-center gap-2 md:pl-4"
                         to="https://github.com/Kiranism/next-shadcn-dashboard-starter"
                         target="_blank"
                     >
-                        <img src={logo} alt="Logo" className="w-8 h-8" />
+                        <img src={logo} alt="Logo" className="w-14 h-14" />
+                        <p className="text-xl font-bold">FarmEasy</p>
                     </Link>
                 </Box>
 
@@ -38,22 +39,11 @@ const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                     <MobileSidebar />
                 </Box>
 
-                <Box className={cn("lg:hidden flex flex-row space-x-1")}>
+                <Box className={cn("lg:hidden items-center justify-center flex flex-col-reverse space-x-1 mt-2")}>
                     <Typography variant="h6" className="font-semibold">
-                        Company Name
+                        FarmEasy
                     </Typography>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="mr-2 h-6 w-6"
-                    >
-                        <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
-                    </svg>
+                    <img src={logo} alt="Logo" className="w-14 h-14" />
                 </Box>
 
                 <Box className={cn("flex items-center gap-2")}>
@@ -98,7 +88,6 @@ const Navbar: React.FC = () => {
     }, []);
 
     if (!user) return null;
-
 
     return (
         <Box className="flex flex-row justify-between items-center space-x-2">

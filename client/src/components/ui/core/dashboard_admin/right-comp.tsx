@@ -34,7 +34,7 @@ const RightComp: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                 <Box className="flex items-center" key={index}>
                     <Avatar className="h-9 w-9">
                         <AvatarImage src={user.img} alt="Avatar" />
-                        <AvatarFallback>
+                        <AvatarFallback className="border border-black">
                             {user.name.split(" ")[0].slice(0, 2).toUpperCase()}
                         </AvatarFallback>
                     </Avatar>
@@ -46,7 +46,7 @@ const RightComp: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                             {user.email}
                         </p>
                     </Box>
-                    <Box className="ml-auto font-medium">{user.role}</Box>
+                    <Box className="ml-auto font-medium border-2 rounded-xl border-black py-2 px-5 bg-gray-300">{user.role}</Box>
                 </Box>
             ))}
             {children}

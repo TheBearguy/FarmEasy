@@ -65,23 +65,23 @@ export default function Feed() {
             </Section>
             <Section className="flex flex-col justify-center items-center">
                 <Box>
-                    <Box className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
+                    <Box className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10 mb-20">
                         {product.map((item, index) => (
                             <Card
-                                className="w-[350px] bg-slate-300"
+                                className="w-[350px] bg-green-400 border-2 border-green-700 bg-opacity-35"
                                 key={index}
                             >
                                 <CardHeader className="rounded-md overflow-hidden">
                                     <img
                                         src={`http://localhost:5001/${item.fertImage?.split("\\")[1]}`}
                                         alt={item.fertImage}
-                                        className="w-full h-40 object-cover rounded-md"
+                                        className="w-full h-72 object-cover rounded-md border-2 border-black"
                                     />
                                 </CardHeader>
                                 <CardContent>
                                     <Dialog>
                                         <DialogTrigger asChild>
-                                            <Button variant="outline">
+                                            <Button variant="outline" className="border-2 border-black">
                                                 Read More
                                             </Button>
                                         </DialogTrigger>
