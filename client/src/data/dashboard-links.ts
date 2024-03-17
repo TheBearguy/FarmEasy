@@ -44,13 +44,13 @@ export const SIDEBAR_LINKS_FARMER: NavItem[] = [
         link: "/dashboard/farmer/chat",
     },
     {
-        title: "Buy Equipments",
+        title: "Buy And Rent",
         icon: BiPurchaseTag,
         iconColor: "rt-normal-red-1000",
         link: "/dashboard/farmer/buy",
     },
     {
-        title: "Sell and Rent",
+        title: "Sell Products",
         icon: IoIosPricetag,
         iconColor: "rt-normal-red-1000",
         link: "/dashboard/farmer/sell",
@@ -59,7 +59,7 @@ export const SIDEBAR_LINKS_FARMER: NavItem[] = [
         title: "Cart",
         icon: FaCartShopping,
         iconColor: "rt-normal-blue-1000",
-        link: "/dashboard/farmer/convert-to-pdf",
+        link: "/dashboard/farmer/cart",
     },
 ];
 

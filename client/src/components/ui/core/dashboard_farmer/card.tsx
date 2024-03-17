@@ -27,9 +27,10 @@ export default function ProductCard({
     prodImage,
     prodName,
     prodPrice,
+    prodQuantity,
 }: ProductProps) {
     const [quantity, setQuantity] = useState(0);
-    
+
     return (
         <Card className="w-[350px] bg-slate-300">
             <CardHeader className="rounded-md overflow-hidden">
@@ -85,7 +86,9 @@ export default function ProductCard({
                     <Button
                         variant="outline"
                         onClick={() =>
-                            setQuantity((prev) => (prev < 5 ? prev + 1 : 5))
+                            setQuantity((prev) =>
+                                prev < 5 && prev < prodQuantity ? prev + 1 : 5,
+                            )
                         }
                     >
                         +

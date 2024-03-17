@@ -11,7 +11,7 @@ import { PRODUCT_CATEGORY } from "@/data/product_category";
 
 import { productApi } from "@/api/index";
 
-function Form({ onClose }) {
+function Form() {
     const [formData, setFormData] = useState({
         prodName: "",
         prodImage: "",
@@ -59,7 +59,7 @@ function Form({ onClose }) {
 
         try {
             await fetch(productApi.ADD_PRODUCT, requestOptions);
-            onClose(); // Close the dialog after successful submission
+            window.location.reload();
         } catch (error) {
             console.error("Error occurred:", error);
         }
@@ -67,7 +67,7 @@ function Form({ onClose }) {
 
     return (
         <Box className="grid gap-4 py-4">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} encType="multipart/form-data">
                 <div className="mb-4">
                     {" "}
                     <label

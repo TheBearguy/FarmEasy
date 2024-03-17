@@ -35,6 +35,7 @@ const Dashboard_Farmer = lazy(() => import("@/pages/dashboard_farmer/main"));
 const Chat = lazy(() => import("@/pages/dashboard_farmer/chat"));
 const Buy = lazy(() => import("@/pages/dashboard_farmer/buy"));
 const Sell = lazy(() => import("@/pages/dashboard_farmer/sell"));
+const FarmerCart = lazy(() => import("@/pages/dashboard_farmer/cart"));
 
 const User = lazy(() => import("@/pages/user"));
 const Cart = lazy(() => import("@/pages/user-cart"));
@@ -129,6 +130,17 @@ const router = createBrowserRouter(
                         <Loading>
                             <PrivateRoute>
                                 <Chat />
+                            </PrivateRoute>
+                        </Loading>
+                    }
+                />
+
+                <Route
+                    path="cart"
+                    element={
+                        <Loading>
+                            <PrivateRoute>
+                                <FarmerCart />
                             </PrivateRoute>
                         </Loading>
                     }

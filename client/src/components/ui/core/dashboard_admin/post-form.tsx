@@ -16,7 +16,7 @@ function Form() {
         fertName: "",
         fertImage: "",
         fertPrice: "",
-        category: "Crop seeds",
+        category: "Inorganic",
         fertDescription: "",
         fertQuantity: "",
     });

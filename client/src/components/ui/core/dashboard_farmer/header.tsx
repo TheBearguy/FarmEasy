@@ -138,6 +138,18 @@ const Navbar: React.FC = () => {
                         Profile
                     </DropdownMenuItem>
 
+                    <DropdownMenuItem
+                        onClick={() =>
+                            (window.location.href =
+                                "http://192.168.137.113:8000/")
+                        }
+                        className="hover:bg-custom-border"
+                    >
+                        Models
+                    </DropdownMenuItem>
+
+                    {/* http://192.168.137.113:8000/ */}
+
                     <DropdownMenuSeparator className="border-custom-border bg-custom-border hover:bg-custom-border" />
                     <DropdownMenuItem onClick={handleLogOut}>
                         Logout
