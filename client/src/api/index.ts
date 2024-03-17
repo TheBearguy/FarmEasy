@@ -21,3 +21,8 @@ export const productApi = {
     ADD_PRODUCT: BASE_URL + "/postProduct",
     GET_ALL_USER_PRODUCTS: BASE_URL + "/getAllProducts",
 };
+
+export const farmerApi = {
+    GET_FARMER_PRODUCTS: BASE_URL + "/getFarmerProducts",
+    GET_ALL_FERTILIZERS: BASE_URL + "/getAllFertilizers",
+};
