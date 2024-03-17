@@ -46,7 +46,9 @@ const RightComp: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                             {user.email}
                         </p>
                     </Box>
-                    <Box className="ml-auto font-medium border-2 rounded-xl border-black py-2 px-5 bg-gray-300">{user.role}</Box>
+                    <Box className="ml-auto font-medium border-2 rounded-xl border-black py-2 px-5 bg-gray-300">
+                        {user.role}
+                    </Box>
                 </Box>
             ))}
             {children}

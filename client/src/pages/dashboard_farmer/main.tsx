@@ -96,6 +96,7 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                 <Box className="my-5 p-2 rounded-xl ring-2 ring-slate-100">
                     <RightComp />
                 </Box>
+                <p>&nbsp;</p>
             </Box>
             {children}
         </Main>

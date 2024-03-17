@@ -10,8 +10,9 @@ import {
 import { PRODUCT_CATEGORY } from "@/data/product_category";
 
 import { productApi } from "@/api/index";
+import { toast } from "sonner";
 
-function Form({ onClose }) {
+function Form() {
     const [formData, setFormData] = useState({
         prodName: "",
         prodImage: "",
@@ -59,7 +60,14 @@ function Form({ onClose }) {
 
         try {
             await fetch(productApi.ADD_PRODUCT, requestOptions);
-            window.location.reload();
+
+            toast.success("Product added successfully", {
+                position: "bottom-right",
+            });
+
+            setTimeout(() => {
+                window.location.reload();
+            }, 2000);
         } catch (error) {
             console.error("Error occurred:", error);
         }
@@ -185,7 +193,6 @@ function Form({ onClose }) {
 }
 
 function Post() {
-
     return (
         <Section className="flex flex-col w-full space-y-6">
             <Box className="flex self-stretch items-end justify-between mx-5 px-5 pb-5 border-b border-black">
@@ -196,7 +203,7 @@ function Post() {
                     <DialogTrigger asChild>
                         <Button
                             variant="outline"
-                            className="bg-custom-border text-xl py-6 rounded-md hover:border-green-600 hover:border-2 mt-5 transition-all duration-300 font-bold"}
+                            className="bg-custom-border text-xl py-6 rounded-md hover:border-green-600 hover:border-2 mt-5 transition-all duration-300 font-bold"
                         >
                             Add Products
                         </Button>
@@ -206,7 +213,6 @@ function Post() {
                     </DialogContent>
                 </Dialog>
             </Box>
-            
         </Section>
     );
 }

@@ -1,5 +1,15 @@
 import { useState, useEffect } from "react";
-import Card from "@components/core/dashboard_farmer/card";
+import { Button } from "@components/common/button";
+import {
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogHeader,
+    DialogTitle,
+    DialogTrigger,
+} from "@components/common/dialog";
+
+import { Card, CardContent, CardHeader } from "@components/common/card";
 
 import { Main, Box } from "@components/common/containers";
 import { Typography } from "@components/common/typography";
@@ -58,14 +68,58 @@ export default function Buy() {
                 {product.length &&
                     product.map((item, index) => (
                         <Card
+                            className="w-[350px] bg-blue-400 border-2 border-blue-700 bg-opacity-50"
                             key={index}
-                            prodName={item.fertName}
-                            category={item.category}
-                            prodImage={item.fertImage}
-                            prodDescription={item.fertDescription}
-                            prodPrice={parseInt(item.fertPrice)}
-                            prodQuantity={parseInt(item.fertQuantity)}
-                        />
+                        >
+                            <CardHeader className="rounded-md overflow-hidden">
+                                <img
+                                    src={`http://localhost:5001/${item.fertImage?.split("\\")[1]}`}
+                                    alt={item.fertImage}
+                                    className="w-full h-72 object-cover rounded-md border-2 border-black"
+                                />
+                            </CardHeader>
+                            <CardContent>
+                                <Dialog>
+                                    <DialogTrigger asChild>
+                                        <Button
+                                            variant="outline"
+                                            className="border-2 border-black"
+                                        >
+                                            Read More
+                                        </Button>
+                                    </DialogTrigger>
+                                    <DialogContent className="sm:max-w-[425px] space-y-5">
+                                        <DialogHeader>
+                                            <DialogTitle>
+                                                {item.fertName}
+                                            </DialogTitle>
+                                            <DialogDescription>
+                                                {item.fertDescription}
+                                            </DialogDescription>
+                                        </DialogHeader>
+
+                                        <Box>
+                                            <img
+                                                src={`http://localhost:5001/${item.fertImage?.split("\\")[1]}`}
+                                                className="rounded-lg"
+                                            />
+                                        </Box>
+
+                                        <Box className="flex flex-row items-center gap-10">
+                                            <Typography variant="h5">
+                                                Category
+                                            </Typography>
+                                            <Typography
+                                                variant="h6"
+                                                className="border-2 p-2 border-black rounded-md bg-rt-alpha-slate-700"
+                                            >
+                                                {item.category}
+                                            </Typography>
+                                        </Box>
+                                    </DialogContent>
+                                </Dialog>
+                            </CardContent>
+                        </Card>
                     ))}
             </Box>
         </Main>

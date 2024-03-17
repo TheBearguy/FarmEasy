@@ -152,7 +152,7 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                         </TabsList>
                     </Tabs>
 
-                    <Box className="grid grid-rows-2 lg:grid-cols-7 gap-4 pt-2">
+                    <Box className="grid max-md:grid-rows-2 lg:grid-cols-7 gap-4 pt-2">
                         <Card className="col-span-4">
                             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                                 <CardTitle className="text-sm font-bold">
@@ -175,6 +175,8 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                             </CardContent>
                         </Card>
                     </Box>
+
+                    <p>&nbsp;</p>
                 </Box>
             </Box>
             {children}
