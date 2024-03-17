@@ -1,4 +1,4 @@
-const Product = require("./../model/productModal");
+const Products = require("./../model/productModal");
 const User = require("./../model/userModal");
 
 // GET : TOTAL NUMBER OF FARMERS - DONE
@@ -48,6 +48,14 @@ exports.getAllUsersAndFarmers = async (req, res) => {
 
 // GET : TOTAL REVENUE OF FARMERS
 
-// GET : TOTAL NUMBER OF PRODUCTS SOLD
+// GET : TOTAL NUMBER OF PRODUCTS LISTED BY FARMERS
+exports.productsListed = async (req, res) => {
+    try {
+        const count = await Products.countDocuments({});
+        res.status(200).json({ totalNoOfProductsListed: count });
+    } catch (err) {
+        res.status(500).json({ message: "Internal server error" });
+    }
+}
 
 // GET : TOTAL NUMBER OF EQUIMENTS/SEEDS PURCHASED

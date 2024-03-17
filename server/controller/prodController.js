@@ -59,13 +59,28 @@ exports.postProduct = async (req, res, next) => {
 exports.getAllProducts = async (req, res) => {
     try {
         // const products = await Product.find({}).exec();
-        const products = await Product.find({ category: { $in: ["Fruits", "Vegetables"] }}).exec();
+        const products = await Product.find({});
+        // const products = await Product.find({ category: { $in: ["Fruits", "Vegetables"] }});
 
         res.status(200).json({ NoOfProducts: products.length, products});
     } catch (err) {
         res.status(500).json({ message: "Internal server error" });
     }
 }
+
+// exports.getAllProducts = async (req, res) => {
+//     try {
+//         const products = await Product.find({ 
+//             category: { $in: ["Fruits", "Vegetables"].map(category => new RegExp(`^${category}$`, 'i')) }
+//         });
+
+//         res.status(200).json({ NoOfProducts: products.length, products });
+//     } catch (err) {
+//         console.error("Error fetching products:", err);
+//         res.status(500).json({ message: "Internal server error" });
+//     }
+// }
+
 
 
 exports.getSingleProduct = (req, res) => {
