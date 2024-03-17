@@ -13,6 +13,7 @@ export const login = async (data: { email: string; password: string }) => {
             const token = response.token;
             
             localStorage.setItem("token", token);
+            localStorage.setItem("User", JSON.stringify(response.data.user));
 
             return response.data.user;
         }

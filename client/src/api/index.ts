@@ -13,6 +13,7 @@ export const adminApi = {
 export const authApi = {
     LOGIN: BASE_URL + "/login",
     SIGNUP: BASE_URL + "/signup",
+    GET_CURRENT_USER: BASE_URL + "/getCurrentUserDetails",
 };
 
 export const productApi = {

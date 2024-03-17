@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { FaHeart } from "@/icons";
 
 import { Box, Section, Main } from "@components/common/containers";
-import PostForm from "@components/core/dashboard_farmer/post-form";
+import PostForm from "@components/core/dashboard_admin/post-form";
 
 import {
     Card,
