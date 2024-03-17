@@ -1,5 +1,3 @@
-import { useState } from "react";
-
 import { Button } from "@components/common/button";
 import { Box, Wrapper } from "@components/common/containers";
 import { Typography } from "@components/common/typography";
@@ -19,6 +17,7 @@ import {
     CardHeader,
 } from "@components/common/card";
 
+import { toast } from "sonner";
 import { ProductProps } from "@/types";
 
 export default function ProductCard({
@@ -29,7 +28,28 @@ export default function ProductCard({
     prodPrice,
     prodQuantity,
 }: ProductProps) {
-    const [quantity, setQuantity] = useState(0);
+    const textToCopy = () => {
+        if (!navigator.clipboard) {
+            console.error("Clipboard API not supported");
+            return;
+        }
+
+        const text = "+919875162835";
+        navigator.clipboard
+            .writeText(text)
+            .then(() => {
+                toast.success("Text copied to clipboard", {
+                    position: "bottom-right",
+                });
+            })
+            .catch((error) => {
+                toast.error("Failed to copy text", {
+                    position: "bottom-right",
+                });
+
+                console.error("Failed to copy text", error);
+            });
+    };
 
     return (
         <Card className="w-[350px] bg-slate-300">
@@ -73,30 +93,19 @@ export default function ProductCard({
                 </Dialog>
             </CardContent>
             <CardFooter className="flex justify-between">
-                <Box className="space-x-1">
-                    <Button
-                        variant="outline"
-                        onClick={() =>
-                            setQuantity((prev) => (prev > 0 ? prev - 1 : 0))
-                        }
-                    >
-                        -
-                    </Button>
-                    <Wrapper className="font-bold">{quantity}</Wrapper>
-                    <Button
-                        variant="outline"
-                        onClick={() =>
-                            setQuantity((prev) =>
-                                prev < 5 && prev < prodQuantity ? prev + 1 : 5,
-                            )
-                        }
-                    >
-                        +
-                    </Button>
+                <Box className="flex flex-col">
+                    <Box className="space-x-1">
+                        <Wrapper className="font-bold">
+                            Quantity: {prodQuantity}
+                        </Wrapper>
+                    </Box>
+                    <Box className="space-x-1">
+                        <Wrapper className="font-bold">
+                            Price: {prodPrice}
+                        </Wrapper>
+                    </Box>
                 </Box>
-                <Button>
-                    Add To Cart &nbsp;<b>${prodPrice}</b>
-                </Button>
+                <Button onClick={textToCopy}>Call Our Agent</Button>
             </CardFooter>
         </Card>
     );
