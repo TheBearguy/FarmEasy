@@ -32,7 +32,7 @@ const Sidebar: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                                 key={index}
                                 to={item.link || "/dashboard"}
                                 className={cn(
-                                    "flex items-center py-1 space-x-3 xl:space-x-5 bg-custom-color hover:bg-custom-hover pl-1 rounded-md",
+                                    "flex items-center py-4 space-x-3 xl:space-x-5  bg-custom-color hover:bg-custom-hover pl-3 -ml-5 rounded-md",
                                     {
                                         "bg-custom-hover":
                                             location.pathname === item.link,

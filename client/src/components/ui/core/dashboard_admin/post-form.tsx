@@ -188,12 +188,15 @@ function Form() {
 function Post() {
     return (
         <Section className="flex flex-col w-full space-y-6">
-            <Box className="flex self-stretch  py-3 border-b border-black">
+            <Box className="flex self-stretch items-end justify-between mx-5 px-5 pb-5 border-b border-black">
+                <Box className="text-[1.8rem] font-bold">
+                    Get the best fertilizers direct from Indian Government  
+                </Box>
                 <Dialog>
                     <DialogTrigger asChild>
                         <Button
                             variant="outline"
-                            className="bg-custom-border hover:bg-custom-hover transition-all duration-300 font-bold"
+                            className="bg-custom-border text-xl py-6 rounded-md hover:border-green-600 hover:border-2 mt-5 transition-all duration-300 font-bold"
                         >
                             Add Fertilizers 
                         </Button>

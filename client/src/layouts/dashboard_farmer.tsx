@@ -9,7 +9,7 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
         <main className="relative">
             <HeaderFarmer />
 
-            <section className="flex overflow-hidden [&>*]:font-sans">
+            <section className="flex overflow-hidden [&>*]:font-sans mt-10">
                 <SidebarFarmer />
                 <Box className="w-[15.1rem] xl:w-[22.73rem] hidden lg:block lg:pl-24 xl:pl-10"></Box>
                 <main className="w-full pt-14">

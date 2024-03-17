@@ -26,7 +26,7 @@ const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                 {/* Logo goes here */}
                 <Box className="hidden lg:block">
                     <Link className="flex items-center gap-2 pl-4" to="#">
-                        <img src={logo} alt="Logo" className="w-8 h-8" />
+                        <img src={logo} alt="Logo" className="w-16 h-16" />
                     </Link>
                 </Box>
 
