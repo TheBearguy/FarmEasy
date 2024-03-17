@@ -24,7 +24,7 @@ exports.getTotolNoOfUsers = async (req, res) => {
 // GET : TOTAL PRODUCTS OF FARMERS - DONE
 exports.getTotalProductsOfFarmers = async (req, res) => {
     try{
-        const products = await Product.find({});
+        const products = await Products.find({});
         console.log(products);
         res.status(200).json(products); // Send all users in the response
     } catch (err) {

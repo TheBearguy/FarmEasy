@@ -60,3 +60,24 @@ export const getUser = async () => {
         console.log(error);
     }
 };
+
+export const getFertilizer = async () => {
+    try {
+        const token = localStorage.getItem("token");
+
+        const all_fertilizers = await axios
+            .get(adminApi.GET_ALL_FERTILIZERS, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            })
+            .then((response) => {
+                return response.data;
+            });
+
+        return all_fertilizers;
+    } catch (error) {
+        console.log(error);
+    }
+}
