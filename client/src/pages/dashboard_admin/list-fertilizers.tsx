@@ -1,29 +1,50 @@
 import { useEffect, useState } from "react";
 
-import { FaHeart } from "@/icons";
-
+import { Button } from "@components/common/button";
 import { Box, Section, Main } from "@components/common/containers";
 import PostForm from "@components/core/dashboard_admin/post-form";
 
+import { Typography } from "@components/common/typography";
+import { Card, CardContent, CardHeader } from "@components/common/card";
 import {
-    Card,
-    CardContent,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from "@components/common/card";
+    Dialog,
+    DialogContent,
+    DialogTrigger,
+    DialogHeader,
+    DialogTitle,
+    DialogDescription,
+} from "@components/common/dialog";
 
-import { ProductProps } from "@/types";
+import { adminApi } from "@/api";
 
 import { toast } from "sonner";
 
+interface fertilizerProps {
+    fertName: string;
+    fertDescription: string;
+    fertImage: string;
+    category: string;
+}
+
 export default function Feed() {
-    const [product, setProduct] = useState<ProductProps[]>([]);
+    const [product, setProduct] = useState<fertilizerProps[]>([]);
 
     useEffect(() => {
         async function fetchPosts() {
             try {
-                
+                const token = localStorage.getItem("token");
+                const response = await fetch(adminApi.GET_ALL_FERTILIZERS, {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+
+                const data = await response.json();
+
+                setProduct(data.fertilizers);
+                console.log(data);
+
                 toast.success("Products fetched successfully", {
                     position: "bottom-right",
                 });
@@ -44,22 +65,57 @@ export default function Feed() {
             </Section>
             <Section className="flex flex-col justify-center items-center">
                 <Box>
-                    <Box className="flex flex-col self-center gap-10">
+                    <Box className="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-10">
                         {product.map((item, index) => (
                             <Card
+                                className="w-[350px] bg-slate-300"
                                 key={index}
-                                className="flex flex-col gap-4 lg:w-[500px] md:w-[300px] w-[150px]"
                             >
-                                <CardHeader>
-                                    <img src={item.img} alt="post" />
+                                <CardHeader className="rounded-md overflow-hidden">
+                                    <img
+                                        src={`http://localhost:5001/${item.fertImage?.split("\\")[1]}`}
+                                        alt={item.fertImage}
+                                        className="w-full h-40 object-cover rounded-md"
+                                    />
                                 </CardHeader>
                                 <CardContent>
-                                    <CardTitle>{item.name}</CardTitle>
+                                    <Dialog>
+                                        <DialogTrigger asChild>
+                                            <Button variant="outline">
+                                                Read More
+                                            </Button>
+                                        </DialogTrigger>
+                                        <DialogContent className="sm:max-w-[425px] space-y-5">
+                                            <DialogHeader>
+                                                <DialogTitle>
+                                                    {item.fertName}
+                                                </DialogTitle>
+                                                <DialogDescription>
+                                                    {item.fertDescription}
+                                                </DialogDescription>
+                                            </DialogHeader>
+
+                                            <Box>
+                                                <img
+                                                    src={`http://localhost:5001/${item.fertImage?.split("\\")[1]}`}
+                                                    className="rounded-lg"
+                                                />
+                                            </Box>
+
+                                            <Box className="flex flex-row items-center gap-10">
+                                                <Typography variant="h5">
+                                                    Category
+                                                </Typography>
+                                                <Typography
+                                                    variant="h6"
+                                                    className="border-2 p-2 border-black rounded-md bg-rt-alpha-slate-700"
+                                                >
+                                                    {item.category}
+                                                </Typography>
+                                            </Box>
+                                        </DialogContent>
+                                    </Dialog>
                                 </CardContent>
-                                <CardFooter>
-                                    <FaHeart className="text-red-500 cursor-pointer" />
-                                    <span>{item.price}</span>
-                                </CardFooter>
                             </Card>
                         ))}
                     </Box>

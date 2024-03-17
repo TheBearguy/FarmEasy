@@ -23,18 +23,19 @@ import { ProductProps } from "@/types";
 
 export default function ProductCard({
     category,
-    description,
-    img,
-    name,
-    price,
+    prodDescription,
+    prodImage,
+    prodName,
+    prodPrice,
 }: ProductProps) {
     const [quantity, setQuantity] = useState(0);
+    
     return (
         <Card className="w-[350px] bg-slate-300">
             <CardHeader className="rounded-md overflow-hidden">
                 <img
-                    src={img}
-                    alt={name}
+                    src={`http://localhost:5001/${prodImage?.split("\\")[1]}`}
+                    alt={prodName}
                     className="w-full h-40 object-cover rounded-md"
                 />
             </CardHeader>
@@ -45,12 +46,17 @@ export default function ProductCard({
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px] space-y-5">
                         <DialogHeader>
-                            <DialogTitle>{name}</DialogTitle>
-                            <DialogDescription>{description}</DialogDescription>
+                            <DialogTitle>{prodName}</DialogTitle>
+                            <DialogDescription>
+                                {prodDescription}
+                            </DialogDescription>
                         </DialogHeader>
 
                         <Box>
-                            <img src={img} className="rounded-lg" />
+                            <img
+                                src={`http://localhost:5001/${prodImage?.split("\\")[1]}`}
+                                className="rounded-lg"
+                            />
                         </Box>
 
                         <Box className="flex flex-row items-center gap-10">
@@ -86,7 +92,7 @@ export default function ProductCard({
                     </Button>
                 </Box>
                 <Button>
-                    Add To Cart &nbsp;<b>${price}</b>
+                    Add To Cart &nbsp;<b>${prodPrice}</b>
                 </Button>
             </CardFooter>
         </Card>

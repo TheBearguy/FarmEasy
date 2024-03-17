@@ -8,6 +8,7 @@ export const adminApi = {
     ALL_USER_AND_FARMERS: BASE_URL + "/getAllUsersAndFarmers",
 
     ADD_FERTILIZER: BASE_URL + "/postFertilizers",
+    GET_ALL_FERTILIZERS: BASE_URL + "/getAllFertilizers",
 };
 
 export const authApi = {

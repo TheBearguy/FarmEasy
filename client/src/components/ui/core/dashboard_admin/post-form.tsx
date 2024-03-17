@@ -66,7 +66,7 @@ function Form() {
 
     return (
         <Box className="grid gap-4 py-4">
-            <form onSubmit={handleSubmit} enctype="multipart/form-data">
+            <form onSubmit={handleSubmit}>
                 <div className="mb-4">
                     {" "}
                     <label

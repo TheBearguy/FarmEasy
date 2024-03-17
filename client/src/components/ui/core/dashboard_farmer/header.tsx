@@ -81,7 +81,10 @@ const Navbar: React.FC = () => {
         toast.success("Logged out successfully", {
             position: "bottom-right",
         });
-        window.location.reload();
+
+        setTimeout(() => {
+            window.location.reload();
+        }, 3000);
     };
 
     useEffect(() => {
@@ -96,6 +99,7 @@ const Navbar: React.FC = () => {
 
     if (!user) return null;
 
+
     return (
         <Box className="flex flex-row justify-between items-center space-x-2">
             <Section>
@@ -108,7 +112,7 @@ const Navbar: React.FC = () => {
                         <img
                             src={`http://localhost:5001/${user.file?.split("\\")[1]}`}
                             alt="Profile Image"
-                            className="rounded-full aspect-square"
+                            className="rounded-full aspect-square object-cover w-10 h-10"
                         />
                     </Button>
                 </DropdownMenuTrigger>
