@@ -60,9 +60,9 @@ export const LoginForm = () => {
 
     return (
         <form onSubmit={handleSubmit(submitLoginForm)}>
-            <Box className="flex flex-col items-stretch justify-center space-y-4 py-5">
-                <Box className="text-rich-black-5 flex flex-1 flex-col items-start gap-2 text-sm">
-                    <label className="important" htmlFor="email">
+            <Box className="px-[20px] md:px-[100px] flex flex-col items-stretch justify-center space-y-4 py-5 border-2 border-black px-[100px] rounded-3xl mt-[30px] bg-green-300">
+                <Box className="text-rich-black-1100 flex flex-1 flex-col items-start gap-2 text-sm">
+                    <label className="important font-semibold text-black" htmlFor="email">
                         Email Address
                     </label>
                     <input
@@ -75,7 +75,7 @@ export const LoginForm = () => {
                             },
                         })}
                         placeholder="Enter your email address"
-                        className="custom-input-field w-full flex-1 indent-2 text-base font-normal"
+                        className="custom-input-field w-full flex-1 bg-white indent-2 text-base font-normal"
                     />
                     {errors.email && (
                         <Wrapper className="text-rich-yellow-50 text-xs">
@@ -85,8 +85,8 @@ export const LoginForm = () => {
                 </Box>
 
                 <Box className="flex flex-col justify-center gap-1">
-                    <Box className="text-rich-black-5 flex flex-1 flex-col items-start gap-2 text-sm">
-                        <label className="important" htmlFor="password">
+                    <Box className="text-rich-black-1100 flex flex-1 flex-col items-start gap-2 text-sm">
+                        <label className="important font-semibold text-black" htmlFor="password">
                             Password
                         </label>
                         <Wrapper className="relative flex w-full flex-1 items-center">
@@ -100,7 +100,7 @@ export const LoginForm = () => {
                                     },
                                 })}
                                 placeholder="Enter your password"
-                                className="custom-input-field w-full flex-1 indent-2 text-base font-normal"
+                                className="custom-input-field bg-white w-full flex-1 indent-2 text-base font-normal"
                             />
                             <Wrapper
                                 onClick={togglePassword}
@@ -114,7 +114,7 @@ export const LoginForm = () => {
                             </Wrapper>
                         </Wrapper>
                         {errors.password && (
-                            <Wrapper className="text-rich-yellow-50 text-xs">
+                            <Wrapper className="text-red-600 text-xs">
                                 {errors.password.message?.toString()}
                             </Wrapper>
                         )}
@@ -132,14 +132,14 @@ export const LoginForm = () => {
                 <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="text-rich-black-900 bg-rich-yellow-50 disabled:bg-rich-black-300 disabled:text-rich-black-5 flex select-none flex-col items-stretch justify-center overflow-hidden rounded-md px-2 py-3 font-bold hover:scale-[0.99]"
+                    className="w-full bg-red-400 text-black p-2 rounded-md hover:bg-blue-600 bg-lavender border-2 border-black"
                 >
                     Sign In
                 </Button>
-                <Box className="select-none">
-                    <Wrapper className="text-rich-black-5 text-sm">
+                <Box className="select-none text-center">
+                    <Wrapper className="text-rich-black-900 text-sm">
                         Don't have an account?{" "}
-                        <Link to="/signup" className="text-pure-blue-100">
+                        <Link to="/signup" className="text-black-100 font-bold text-black">
                             Sign Up
                         </Link>
                     </Wrapper>
