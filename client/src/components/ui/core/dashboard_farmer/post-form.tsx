@@ -11,7 +11,7 @@ import { PRODUCT_CATEGORY } from "@/data/product_category";
 
 import { productApi } from "@/api/index";
 
-function Form() {
+function Form({ onClose }) {
     const [formData, setFormData] = useState({
         prodName: "",
         prodImage: "",
@@ -52,13 +52,14 @@ function Form() {
             method: "POST",
             body: formDataToSend, // Send FormData object for file upload
             headers: {
-                "Content-Type": "multipart/form-data",
+                // "Content-Type": "multipart/form-data",
                 Authorization: `Bearer ${token}`,
             },
         };
 
         try {
             await fetch(productApi.ADD_PRODUCT, requestOptions);
+            onClose(); // Close the dialog after successful submission
         } catch (error) {
             console.error("Error occurred:", error);
         }
@@ -176,7 +177,7 @@ function Form() {
                     type="submit"
                     className="w-full bg-blue-500 text-black p-2 rounded-md hover:bg-blue-600 bg-lavender"
                 >
-                    Create
+                    Add Product
                 </button>
             </form>
         </Box>
@@ -184,25 +185,26 @@ function Form() {
 }
 
 function Post() {
+    const [isOpen, setIsOpen] = useState(false);
+
     return (
         <Section className="flex flex-col w-full space-y-6">
             <Box className="flex self-stretch py-1 border-b border-black">
-                <Dialog>
+                <Dialog isOpen={isOpen} onDismiss={() => setIsOpen(false)}>
                     <DialogTrigger asChild>
                         <Button
                             variant="outline"
                             className="bg-custom-border hover:bg-custom-hover transition-all duration-300 font-bold"
+                            onClick={() => setIsOpen(true)}
                         >
                             Add Post
                         </Button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px]">
-                        <Form />
+                        <Form onClose={() => setIsOpen(false)} />
                     </DialogContent>
                 </Dialog>
             </Box>
         </Section>
     );
 }
-
-export default Post;
