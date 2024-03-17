@@ -15,31 +15,8 @@ import { toast } from "sonner";
 export default function User() {
     const navigate = useNavigate();
 
-    const [cart, setCart] = useState<ProductProps[]>([]);
     const [allProducts, setAllProducts] = useState([]);
-
-    const handleClick = (product: ProductProps) => {
-        if (cart.includes(product)) {
-            toast.error("Product already added to cart", {
-                position: "bottom-right",
-                duration: 3000,
-            });
-            return;
-        }
-
-        setCart((prev) => {
-            const newCart = [...prev, product];
-
-            localStorage.setItem("Cart", JSON.stringify(newCart));
-
-            return newCart;
-        });
-
-        toast.success("Product added to cart", {
-            position: "bottom-right",
-            duration: 3000,
-        });
-    };
+    const [cart, setCart] = useState<ProductProps[] | undefined>([]);
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -54,7 +31,7 @@ export default function User() {
 
                 console.log(data);
 
-                setAllProducts(data);
+                setAllProducts(data.products);
             } catch (error) {
                 toast.error("Failed to fetch products", {
                     position: "bottom-right",
@@ -64,7 +41,21 @@ export default function User() {
         };
 
         fetchProducts();
+
+        const dataString = localStorage.getItem("Cart");
+        if (!dataString) {
+            setCart(undefined);
+            return;
+        }
+
+        if (dataString) {
+            setCart(JSON.parse(dataString));
+        }
     }, []);
+
+    if (!cart) {
+
+    }
 
     return (
         <Main className="flex flex-col items-center space-y-10">
@@ -107,7 +98,6 @@ export default function User() {
                                 key={index}
                                 {...product}
                                 prodImage={img}
-                                handleClick={() => handleClick(product)}
                             />
                         );
                     })}

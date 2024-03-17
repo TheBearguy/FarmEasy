@@ -21,9 +21,7 @@ import {
 
 import { ProductProps } from "@/types";
 
-interface ProductCardProps extends ProductProps {
-    handleClick: () => void;
-}
+
 
 export default function ProductCard({
     category,
@@ -31,8 +29,8 @@ export default function ProductCard({
     prodImage,
     prodName,
     prodPrice,
-    handleClick,
-}: ProductCardProps) {
+    prodQuantity,
+}: ProductProps) {
     const [quantity, setQuantity] = useState(0);
 
     return (
@@ -41,7 +39,7 @@ export default function ProductCard({
                 <img
                     src={`http://localhost:5001/${prodImage}`}
                     alt="STORE CARD IMAGE"
-                    className="rounded-xl transform overflow-hidden bg-white duration-200 hover:scale-[1.03] cursor-pointer"
+                    className="rounded-xl transform overflow-hidden max-h-40 object-contain bg-white duration-200 hover:scale-[1.03] cursor-pointer"
                 />
             </CardHeader>
             <CardContent>
@@ -91,13 +89,19 @@ export default function ProductCard({
                     <Button
                         variant="outline"
                         onClick={() =>
-                            setQuantity((prev) => (prev < 5 ? prev + 1 : 5))
+                            setQuantity((prev) =>
+                                prev < 5 && prev < prodQuantity ? prev + 1 : 5,
+                            )
                         }
                     >
                         +
                     </Button>
                 </Box>
-                <Button onClick={handleClick}>
+                <Button
+                    onClick={() =>
+                        handleClick()
+                    }
+                >
                     Add To Cart &nbsp;<b>${prodPrice}</b>
                 </Button>
             </CardFooter>
