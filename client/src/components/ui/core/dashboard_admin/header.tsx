@@ -16,6 +16,8 @@ import {
 
 import { MobileSidebar } from "./sidebar";
 
+import logo from "@/assets/logo.jpg";
+
 const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
     return (
         <Box className="fixed top-0 left-0 right-0 z-20 text-black bg-rt-normal-slate-100/5 dark:bg-rt-normal-sand-1200 border-b-2 border-b-custom-border">
@@ -23,18 +25,7 @@ const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                 {/* Logo goes here */}
                 <Box className="hidden lg:block">
                     <Link className="flex items-center gap-2 pl-4" to="#">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            className="mr-2 h-6 w-6"
-                        >
-                            <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
-                        </svg>
+                        <img src={logo} alt="Logo" className="w-8 h-8" />
                     </Link>
                 </Box>
 
@@ -46,18 +37,6 @@ const Header: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                     <Typography variant="h6" className="font-semibold">
                         Company Name
                     </Typography>
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="mr-2 h-6 w-6"
-                    >
-                        <path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3" />
-                    </svg>
                 </Box>
 
                 <Box className={cn("flex items-center gap-2")}>

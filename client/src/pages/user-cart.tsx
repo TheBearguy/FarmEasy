@@ -131,7 +131,7 @@ export default function UserCart() {
                                     },
                                 );
                                 setTimeout(() => {
-                                    window.location.replace("/user-store");
+                                    window.location.replace("/success");
                                 }, 3000);
                             }}
                         >

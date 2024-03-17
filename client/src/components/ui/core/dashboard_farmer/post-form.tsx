@@ -208,3 +208,5 @@ function Post() {
         </Section>
     );
 }
+
+export default Post;
