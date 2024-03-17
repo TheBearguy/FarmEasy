@@ -5,32 +5,35 @@ import { ProductProps } from "@/types";
 
 const ProductCard = ({
     category,
-    description,
-    img,
-    name,
-    price,
-    quantity,
+    prodDescription,
+    prodImage,
+    prodName,
+    prodPrice,
+    prodQuantity,
 }: ProductProps) => {
-    const [currQuantity, setQuantity] = useState(quantity);
+    const [currQuantity, setQuantity] = useState(prodQuantity);
 
     return (
         <div className="flex py-3 gap-3 md:gap-5 border-b">
             <div className="shrink-0 aspect-square flex items-center justify-center w-[50px] md:w-[120px]">
-                <img src={img} alt="Show Image" />
+                <img
+                    src={`http://localhost:5001/${prodImage?.split("\\")[1]}`}
+                    alt="Show Image"
+                />
             </div>
 
             <div className="w-full flex flex-col">
                 <div className="flex flex-col md:flex-row justify-between">
                     <div className="flex flex-col md:text-2xl font-semibold text-black/[0.8]">
-                        {name}
+                        {prodName}
                     </div>
 
                     <div className="text-sm md:text-md font-medium text-black/[0.5] block md:hidden">
-                        {description}
+                        {prodDescription}
                     </div>
 
                     <div className="text-sm md:text-md font-medium text-black/[0.9] mt-2">
-                        MRP : &#8377; {price}
+                        MRP : &#8377; {prodPrice}
                     </div>
                 </div>
 
