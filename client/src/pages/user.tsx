@@ -12,6 +12,8 @@ import { ProductProps } from "@/types";
 import { productApi } from "@/api";
 import { toast } from "sonner";
 
+import Logo from '/assets'
+
 export default function User() {
     const navigate = useNavigate();
 
@@ -29,10 +31,12 @@ export default function User() {
 
         setCart((prev) => {
             const newCart = [...prev, product];
+
+            localStorage.setItem("Cart", JSON.stringify(newCart));
+
             return newCart;
         });
 
-        console.log(cart);
         toast.success("Product added to cart", {
             position: "bottom-right",
             duration: 3000,
@@ -65,15 +69,21 @@ export default function User() {
     }, []);
 
     return (
-        <Main className="flex flex-col justify-center items-center">
+        <Main className="flex flex-col items-center space-y-10">
             <Box className="w-full flex justify-between px-20 items-center">
                 <Box>
-                    <Typography variant="h4" className="text-left">
-                        FarmEasy
-                    </Typography>
-                    <Typography variant="h6" className="text-center text-sm">
-                        Buy fresh farm produce
-                    </Typography>
+                    <img src="/asset"/>
+                    <Box>
+                        <Typography variant="h4" className="text-left">
+                            FarmEasy
+                        </Typography>
+                        <Typography
+                            variant="h6"
+                            className="text-center text-sm"
+                        >
+                            Buy fresh farm produce
+                        </Typography>
+                    </Box>
                 </Box>
 
                 <Button
