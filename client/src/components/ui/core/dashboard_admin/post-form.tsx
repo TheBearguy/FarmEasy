@@ -52,7 +52,7 @@ function Form() {
             method: "POST",
             body: formDataToSend, // Send FormData object for file upload
             headers: {
-                "Content-Type": "multipart/form-data",
+                // "Content-Type": "multipart/form-data",
                 Authorization: `Bearer ${token}`,
             },
         };
@@ -66,7 +66,7 @@ function Form() {
 
     return (
         <Box className="grid gap-4 py-4">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} enctype="multipart/form-data">
                 <div className="mb-4">
                     {" "}
                     <label
@@ -186,14 +186,14 @@ function Form() {
 function Post() {
     return (
         <Section className="flex flex-col w-full space-y-6">
-            <Box className="flex self-stretch py-1 border-b border-black">
+            <Box className="flex self-stretch  py-3 border-b border-black">
                 <Dialog>
                     <DialogTrigger asChild>
                         <Button
                             variant="outline"
                             className="bg-custom-border hover:bg-custom-hover transition-all duration-300 font-bold"
                         >
-                            Add Post
+                            Add Fertilizers 
                         </Button>
                     </DialogTrigger>
                     <DialogContent className="sm:max-w-[425px]">
