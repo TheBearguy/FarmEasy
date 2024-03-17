@@ -67,7 +67,7 @@ export default function User() {
     }, []);
 
     return (
-        <Main className="flex flex-col items-center space-y-10">
+        <Main className="flex flex-col items-center space-y-10 bg-slate-200 pb-20">
             <Box className="w-full flex justify-between px-20 items-center">
                 <Box>
                     <Box>
@@ -83,18 +83,35 @@ export default function User() {
                     </Box>
                 </Box>
 
-                <Button
-                    className="flex bg-white text-black hover:bg-white active:bg-white focus:bg-white mx-10 my-5 p-1 w-fit relative"
-                    onClick={() => navigate("/user-cart")}
-                >
-                    <CiShoppingCart className="text-2xl" />
-                    <Typography
-                        variant="h6"
-                        className="absolute -bottom-2 -left-1 text-red-600 font-bold"
+                <Box className="space-x-5 flex item-center justify-center">
+                    <Button
+                        className="flex bg-white text-black hover:bg-white active:bg-white focus:bg-white mx-10 my-5 p-1 w-fit relative"
+                        onClick={() => navigate("/user-cart")}
                     >
-                        {cart.length}
-                    </Typography>
-                </Button>
+                        <CiShoppingCart className="text-2xl" />
+                        <Typography
+                            variant="h6"
+                            className="absolute -bottom-2 -left-1 text-red-600 font-bold"
+                        >
+                            {cart.length}
+                        </Typography>
+                    </Button>
+
+                    <Button
+                        className="flex bg-white text-black hover:bg-white active:bg-white focus:bg-white mx-10 my-5 p-1 w-fit relative"
+                        onClick={() => {
+                            localStorage.clear();
+                            navigate("/login");
+                        }}
+                    >
+                        <Typography
+                            variant="h6"
+                            className="text-red-600 font-bold px-1"
+                        >
+                            Logout
+                        </Typography>
+                    </Button>
+                </Box>
             </Box>
 
             <Box className="mt-10 px-5 grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 lg:gap-20 md:gap-10 gap-5">
