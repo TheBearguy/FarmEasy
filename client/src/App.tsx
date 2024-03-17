@@ -27,13 +27,16 @@ const Dashboard_Admin = lazy(() => import("@/pages/dashboard_admin/main"));
 const ConvertToPDF = lazy(
     () => import("@/pages/dashboard_admin/convert-to-pdf"),
 );
+const ListFertilizers = lazy(
+    () => import("@/pages/dashboard_admin/list-fertilizers"),
+);
 
 const Dashboard_Farmer = lazy(() => import("@/pages/dashboard_farmer/main"));
 const Chat = lazy(() => import("@/pages/dashboard_farmer/chat"));
 const Buy = lazy(() => import("@/pages/dashboard_farmer/buy"));
 const Sell = lazy(() => import("@/pages/dashboard_farmer/sell"));
 
-const User = lazy(() => import("@/pages/user"))
+const User = lazy(() => import("@/pages/user"));
 const Cart = lazy(() => import("@/pages/user-cart"));
 
 const NotFound = lazy(() => import("@/pages/not-found"));
@@ -90,6 +93,17 @@ const router = createBrowserRouter(
                         <Loading>
                             <PrivateRoute>
                                 <ConvertToPDF />
+                            </PrivateRoute>
+                        </Loading>
+                    }
+                />
+
+                <Route
+                    path="list-fertilizers"
+                    element={
+                        <Loading>
+                            <PrivateRoute>
+                                <ListFertilizers />
                             </PrivateRoute>
                         </Loading>
                     }

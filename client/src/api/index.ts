@@ -6,11 +6,14 @@ export const adminApi = {
     TOTAL_NUMBER_OF_USERS: BASE_URL + "/getTotolNoOfUsers",
     TOTAL_PRODUCTS_OF_FARMERS: BASE_URL + "/getTotalProductsOfFarmers",
     ALL_USER_AND_FARMERS: BASE_URL + "/getAllUsersAndFarmers",
+
+    ADD_FERTILIZER: BASE_URL + "/postFertilizers",
 };
 
 export const authApi = {
     LOGIN: BASE_URL + "/login",
     SIGNUP: BASE_URL + "/signup",
+    GET_CURRENT_USER: BASE_URL + "/getCurrentUserDetails",
 };
 
 export const productApi = {

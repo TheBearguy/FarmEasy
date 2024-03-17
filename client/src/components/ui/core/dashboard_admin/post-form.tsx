@@ -7,23 +7,23 @@ import {
     DialogTrigger,
 } from "@components/common/dialog";
 
-import { PRODUCT_CATEGORY } from "@/data/product_category";
+import { PRODUCT_CATEGORY_FERTILIZER } from "@/data/product_category";
 
-import { productApi } from "@/api/index";
+import { adminApi } from "@/api/index";
 
 function Form() {
     const [formData, setFormData] = useState({
-        prodName: "",
-        prodImage: "",
-        prodPrice: "",
+        fertName: "",
+        fertImage: "",
+        fertPrice: "",
         category: "Crop seeds",
-        prodDescription: "",
-        prodQuantity: "",
+        fertDescription: "",
+        fertQuantity: "",
     });
 
     const handleChange = (e) => {
-        if (e.target.name === "prodImage") {
-            setFormData({ ...formData, prodImage: e.target.files[0] });
+        if (e.target.name === "fertImage") {
+            setFormData({ ...formData, fertImage: e.target.files[0] });
             console.log(e.target.files[0], "IMAGE");
         } else {
             setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -34,13 +34,13 @@ function Form() {
         e.preventDefault();
 
         const formDataToSend = new FormData(); // Use FormData for file upload
-        formDataToSend.append("prodName", formData.prodName);
-        formDataToSend.append("prodPrice", formData.prodPrice);
+        formDataToSend.append("fertName", formData.fertName);
+        formDataToSend.append("fertPrice", formData.fertPrice);
         formDataToSend.append("category", formData.category);
-        formDataToSend.append("prodDescription", formData.prodDescription);
-        formDataToSend.append("prodQuantity", formData.prodQuantity);
-        formDataToSend.append("prodImage", formData.prodImage);
-        console.log("FormData : ", formData.prodImage); // Append file
+        formDataToSend.append("fertDescription", formData.fertDescription);
+        formDataToSend.append("fertQuantity", formData.fertQuantity);
+        formDataToSend.append("fertImage", formData.fertImage);
+        console.log("FormData : ", formData.fertImage); // Append file
 
         console.log("FormDataToSend : ", formDataToSend);
         console.log("FormData : ", formData);
@@ -58,7 +58,7 @@ function Form() {
         };
 
         try {
-            await fetch(productApi.ADD_PRODUCT, requestOptions);
+            await fetch(adminApi.ADD_FERTILIZER, requestOptions);
         } catch (error) {
             console.error("Error occurred:", error);
         }
@@ -70,16 +70,16 @@ function Form() {
                 <div className="mb-4">
                     {" "}
                     <label
-                        htmlFor="prodName"
+                        htmlFor="fertName"
                         className="block text-sm font-medium text-black"
                     >
                         Name
                     </label>
                     <input
                         type="text"
-                        id="prodName"
-                        name="prodName"
-                        value={formData.prodName}
+                        id="fertName"
+                        name="fertName"
+                        value={formData.fertName}
                         onChange={handleChange}
                         className="text-black mt-1 p-2 w-full border rounded-md"
                     />
@@ -93,9 +93,9 @@ function Form() {
                     </label>
                     <input
                         type="text"
-                        id="prodDescription"
-                        name="prodDescription"
-                        value={formData.prodDescription}
+                        id="fertDescription"
+                        name="fertDescription"
+                        value={formData.fertDescription}
                         onChange={handleChange}
                         className="text-black mt-1 p-2 w-full border rounded-md"
                     />
@@ -106,12 +106,12 @@ function Form() {
                         htmlFor="walletAddress"
                         className="block text-sm font-medium text-black"
                     >
-                        Upload Product Image
+                        Upload fertuct Image
                     </label>
                     <input
                         type="file"
-                        id="prodImage"
-                        name="prodImage"
+                        id="fertImage"
+                        name="fertImage"
                         onChange={handleChange}
                         className="text-black mt-1 p-2 w-full border rounded-md"
                     />
@@ -119,32 +119,32 @@ function Form() {
 
                 <div className="mb-4">
                     <label
-                        htmlFor="prodQuantity"
+                        htmlFor="fertQuantity"
                         className="block text-sm font-medium text-black"
                     >
                         Quantity
                     </label>
                     <input
                         type="text"
-                        id="prodQuantity"
-                        name="prodQuantity"
-                        value={formData.prodQuantity}
+                        id="fertQuantity"
+                        name="fertQuantity"
+                        value={formData.fertQuantity}
                         onChange={handleChange}
                         className="text-black mt-1 p-2 w-full border rounded-md"
                     />
                 </div>
                 <div className="mb-4">
                     <label
-                        htmlFor="prodQuantity"
+                        htmlFor="fertQuantity"
                         className="block text-sm font-medium text-black"
                     >
                         Price
                     </label>
                     <input
                         type="text"
-                        id="prodPrice"
-                        name="prodPrice"
-                        value={formData.prodPrice}
+                        id="fertPrice"
+                        name="fertPrice"
+                        value={formData.fertPrice}
                         onChange={handleChange}
                         className="text-black mt-1 p-2 w-full border rounded-md"
                     />
@@ -165,7 +165,7 @@ function Form() {
                         className="mt-1 p-2 w-full border rounded-md"
                         style={{ color: "black" }}
                     >
-                        {PRODUCT_CATEGORY.map((category, index) => (
+                        {PRODUCT_CATEGORY_FERTILIZER.map((category, index) => (
                             <option key={index} value={category}>
                                 {category}
                             </option>

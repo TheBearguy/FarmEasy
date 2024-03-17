@@ -8,3 +8,13 @@ export const PRODUCT_CATEGORY = [
     "Fruits",
     "Vegetables",
 ];
+
+export const PRODUCT_CATEGORY_FERTILIZER = [
+    "Inorganic",
+    "Organic",
+    "Liquid",
+    "Granular",
+    "Macro Nutrient",
+    "Micro Nutrient",
+    "Natural",
+];

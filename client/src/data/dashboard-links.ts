@@ -17,6 +17,12 @@ export const SIDEBAR_LINKS_ADMIN: NavItem[] = [
         link: "/dashboard/admin",
     },
     {
+        title: "List Fertilizers",
+        icon: BiPurchaseTag,
+        iconColor: "rt-normal-blue-1000",
+        link: "/dashboard/admin/list-fertilizers",
+    },
+    {
         title: "Convert to PDF",
         icon: FaFilePdf,
         iconColor: "rt-normal-red-1000",
