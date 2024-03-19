@@ -1,10 +1,5 @@
-import { useEffect, useState } from "react";
-
-import { Typography } from "@components/common/typography";
 import { Box, Section, Main } from "@components/common/containers";
 import PostForm from "@components/core/dashboard_farmer/post-form";
-
-
 
 export default function Feed() {
     return (
