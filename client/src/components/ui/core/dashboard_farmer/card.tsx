@@ -55,7 +55,7 @@ export default function ProductCard({
         <Card className="w-[350px] bg-slate-300">
             <CardHeader className="rounded-md overflow-hidden">
                 <img
-                    src={`http://localhost:5001/${prodImage?.split("\\")[1]}`}
+                    src={`https://caffeine-crew-xesh.onrender.com/${prodImage?.split("\\")[1]}`}
                     alt={prodName}
                     className="w-full h-40 object-cover rounded-md"
                 />
@@ -75,7 +75,7 @@ export default function ProductCard({
 
                         <Box>
                             <img
-                                src={`http://localhost:5001/${prodImage?.split("\\")[1]}`}
+                                src={`https://caffeine-crew-xesh.onrender.com/${prodImage?.split("\\")[1]}`}
                                 className="rounded-lg"
                             />
                         </Box>

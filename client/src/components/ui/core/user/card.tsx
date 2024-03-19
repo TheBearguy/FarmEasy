@@ -39,7 +39,7 @@ export default function ProductCard({
         <Card className="w-[350px]">
             <CardHeader className="rounded-md overflow-hidden">
                 <img
-                    src={`http://localhost:5001/${prodImage}`}
+                    src={`https://caffeine-crew-xesh.onrender.com/${prodImage}`}
                     alt="STORE CARD IMAGE"
                     className="rounded-xl transform overflow-hidden max-h-40 object-contain bg-white duration-200 hover:scale-[1.03] cursor-pointer"
                 />
@@ -59,7 +59,7 @@ export default function ProductCard({
 
                         <Box>
                             <img
-                                src={`http://localhost:5001/${prodImage}`}
+                                src={`https://caffeine-crew-xesh.onrender.com/${prodImage}`}
                                 alt="STORE CARD IMAGE"
                                 className="rounded-xl"
                             />

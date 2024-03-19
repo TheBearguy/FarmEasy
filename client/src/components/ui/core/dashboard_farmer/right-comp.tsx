@@ -58,7 +58,7 @@ const RightComp: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                     <Box className="flex items-center" key={index}>
                         <Avatar className="h-28 w-28 border-2 border-black">
                             <AvatarImage
-                                src={`http://localhost:5001/${item.prodImage.split("\\")[1]}`}
+                                src={`https://caffeine-crew-xesh.onrender.com/${item.prodImage.split("\\")[1]}`}
                                 alt="Avatar"
                             />
                             <AvatarFallback>

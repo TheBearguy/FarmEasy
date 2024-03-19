@@ -50,7 +50,7 @@ const Dashboard: React.FC<{ children?: React.ReactNode }> = ({ children }) => {
                     <Card className="">
                         <CardContent className="max-h-60 w-full">
                             <img
-                                src={`http://localhost:5001/${author.file?.split("\\")[1]}`}
+                                src={`https://caffeine-crew-xesh.onrender.com/${author.file?.split("\\")[1]}`}
                                 alt={author.name}
                                 className="object-cover max-h-60"
                             />

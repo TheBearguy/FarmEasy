@@ -73,7 +73,7 @@ export default function Buy() {
                         >
                             <CardHeader className="rounded-md overflow-hidden">
                                 <img
-                                    src={`http://localhost:5001/${item.fertImage?.split("\\")[1]}`}
+                                    src={`https://caffeine-crew-xesh.onrender.com/${item.fertImage?.split("\\")[1]}`}
                                     alt={item.fertImage}
                                     className="w-full h-72 object-cover rounded-md border-2 border-black"
                                 />
@@ -100,7 +100,7 @@ export default function Buy() {
 
                                         <Box>
                                             <img
-                                                src={`http://localhost:5001/${item.fertImage?.split("\\")[1]}`}
+                                                src={`https://caffeine-crew-xesh.onrender.com/${item.fertImage?.split("\\")[1]}`}
                                                 className="rounded-lg"
                                             />
                                         </Box>

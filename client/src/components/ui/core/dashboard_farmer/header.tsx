@@ -99,7 +99,7 @@ const Navbar: React.FC = () => {
                 <DropdownMenuTrigger asChild className="px-0 outline-none ">
                     <Button className="rounded-full overflow-hidden aspect-square bg-rt-normal-slate-400 active:bg-rt-normal-slate-400 focus:bg-rt-normal-slate-400 hover:bg-rt-normal-slate-400 dark:bg-rt-normal-slate-1200 dark:active:bg-rt-normal-slate-1200 dark:focus:bg-rt-normal-slate-1200 dark:hover:bg-rt-normal-slate-1200 px-0">
                         <img
-                            src={`http://localhost:5001/${user.file?.split("\\")[1]}`}
+                            src={`https://caffeine-crew-xesh.onrender.com/${user.file?.split("\\")[1]}`}
                             alt="Profile Image"
                             className="rounded-full aspect-square object-cover w-10 h-10"
                         />

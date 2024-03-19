@@ -17,7 +17,7 @@ const ProductCard = ({
         <div className="flex py-3 gap-3 md:gap-5 border-b">
             <div className="shrink-0 aspect-square flex items-center justify-center w-[50px] md:w-[120px]">
                 <img
-                    src={`http://localhost:5001/${prodImage?.split("\\")[1]}`}
+                    src={`https://caffeine-crew-xesh.onrender.com/${prodImage?.split("\\")[1]}`}
                     alt="Show Image"
                 />
             </div>

@@ -1,5 +1,5 @@
 const BASE_URL =
-    import.meta.env.VITE_BASE_URL || "http://localhost:5001/api/v1/users";
+    import.meta.env.VITE_BASE_URL || "https://caffeine-crew-xesh.onrender.com/api/v1/users";
 
 export const adminApi = {
     TOTAL_NUMBER_OF_FARMERS: BASE_URL + "/getTotolNoOfFarmers",
