@@ -8,7 +8,7 @@
 
         /* Bundler mode */
         "moduleResolution": "node", // Change to "node"
-        "allowImportingTsExtensions": true, // Change to true
+        "allowImportingTsExtensions": false, // Change to true
         "resolveJsonModule": true,
         "isolatedModules": false, // Change to false
         "noEmit": false,
