@@ -49,7 +49,7 @@ const ProductCard = ({
                                 className="w-[50px] h-[30px] font-bold border-2 border-black rounded-md p-2 text-center text-black/[0.5] focus:outline-none focus:border-black"
                                 type="text"
                                 value={currQuantity}
-                                onChange={(e) => setQuantity(e.target.value)}
+                                onChange={(e) => setQuantity(parseInt(e.target.value))}
                             />
                         </div>
                     </div>

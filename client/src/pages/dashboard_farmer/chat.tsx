@@ -1,7 +1,3 @@
-// Chat.js
-import React, { useState, useEffect } from "react";
-// import io from "socket.io-client";
-
 function Chat() {
     // const [messages, setMessages] = useState<string[]>([]);
     // const [messageInput, setMessageInput] = useState("");
