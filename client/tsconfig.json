@@ -7,18 +7,18 @@
         "skipLibCheck": true,
 
         /* Bundler mode */
-        "moduleResolution": "node", // Change to "node"
-        "allowImportingTsExtensions": false, // Change to true
+        "moduleResolution": "bundler",
+        "allowImportingTsExtensions": true,
         "resolveJsonModule": true,
-        "isolatedModules": false, // Change to false
-        "noEmit": false,
+        "isolatedModules": true,
+        "noEmit": true,
         "jsx": "react-jsx",
 
         /* Linting */
         "strict": false,
-        "noUnusedLocals": false, // Change to false
-        "noUnusedParameters": false, // Change to false
-        "noFallthroughCasesInSwitch": false, // Change to false
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "noFallthroughCasesInSwitch": true,
 
         "baseUrl": ".",
         "paths": {
