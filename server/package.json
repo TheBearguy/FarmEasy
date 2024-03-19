@@ -4,7 +4,7 @@
     "description": "Farmer Buddy",
     "main": "server.js",
     "scripts": {
-        "start": "nodemon server.js",
+        "start": "index server.js",
         "dev": "nodemon server.js"
     },
     "author": "Nilanchala Panda",
